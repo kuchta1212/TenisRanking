@@ -2,33 +2,55 @@
     ViewData["Title"] = "Home Page";
 }
 
+@model IEnumerable<PlayerViewModel>
+
+
 <div>
-    <div class="row">
-        <div class="card" style="width: 20rem;">
-            <div class="card-body">
-                <h5 class="card-title">Player name</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Games won vs games lost</h6>
-                <h6 class="card-subtitle mb-2 text-muted">DateTime of last game played</h6>
-                <p class="card-text">List of games</p>
+    @{
+        var level = -1;
+        foreach (var playerViewModel in Model)
+        {
+            if (playerViewModel.Rank.Level != level && level != -1)
+            {
+                @Html.Raw("</div>")
+
+            }
+            if (playerViewModel.Rank.Level != level)
+            {
+                @Html.Raw("<div class=\"row\">")
+            }
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@playerViewModel.Player.UserName</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@playerViewModel.Rank.Level</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">@playerViewModel.Rank.Ranking</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">@playerViewModel.Player.LastPlayedMatch</h6>
+                    <p>@string.Join(", ", playerViewModel.Matches)</p>
+                    <button class="btn btn-primary" asp-controller="Home" asp-action="Challange">Vyzvat</button>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card" style="width: 20rem;">
-            <div class="card-body">
-                <h5 class="card-title">Player name</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Games won vs games lost</h6>
-                <h6 class="card-subtitle mb-2 text-muted">DateTime of last game played</h6>
-                <p class="card-text">List of games</p>
-            </div>
-        </div>
-        <div class="card" style="width: 20rem;">
-            <div class="card-body">
-                <h5 class="card-title">Player name</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Games won vs games lost</h6>
-                <h6 class="card-subtitle mb-2 text-muted">DateTime of last game played</h6>
-                <p class="card-text">List of games</p>
-            </div>
-        </div>
-    </div>
+            level = playerViewModel.Rank.Level;
+        }
+    }
 </div>
+
+    
+    @*<div class="row">
+        <div class="card" style="width: 20rem;">
+            <div class="card-body">
+                <h5 class="card-title">Player name</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Games won vs games lost</h6>
+                <h6 class="card-subtitle mb-2 text-muted">DateTime of last game played</h6>
+                <p class="card-text">List of games</p>
+            </div>
+        </div>
+        <div class="card" style="width: 20rem;">
+            <div class="card-body">
+                <h5 class="card-title">Player name</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Games won vs games lost</h6>
+                <h6 class="card-subtitle mb-2 text-muted">DateTime of last game played</h6>
+                <p class="card-text">List of games</p>
+            </div>
+        </div>
+    </div>
+</div>*@

@@ -8,17 +8,24 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20200811154426_init-migration.cs" />
     <Compile Remove="Data\Migrations\20200811154426_init-migration.Designer.cs" />
+    <Compile Remove="Repository\IRepository.cs" />
+    <Compile Remove="Repository\IUnitOfWork.cs" />
+    <Compile Remove="Repository\Repository.cs" />
+    <Compile Remove="Repository\UnitOfWork.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
     <Folder Include="Identity\" />
+    <Folder Include="Repository\" />
   </ItemGroup>
 
 </Project>

@@ -14,15 +14,23 @@ namespace TenisRanking.Models
         public string Id { get; set; }
 
         [ForeignKey("AspNetUsers")]
-        public string PlayerOneName { get; set; }
+        public string Defender { get; set; }
 
         [ForeignKey("AspNetUsers")]
-        public string PlayerTwoName { get; set; }
+        public string Chellanger { get; set; }
 
-        public int AmountOfGamesPlayerOne { get; set; }
+        public int FirstSetDefender { get; set; }
 
-        public int AmountOfGamesPlayerTwo { get; set; }
+        public int SecondSetDefender { get; set; }
+
+        public int ThirdSetDefender { get; set; }
+
+        public int FirstSetChellanger { get; set; }
+
+        public int SecondSetChellanger { get; set; }
 
         public DateTime DateOfGame { get; set; }
+
+        public MatchStatus Status { get; set; }
     }
 }
