@@ -8,12 +8,20 @@ namespace TenisRanking.Data
 {
     public interface IDbContextWrapper
     {
-        Rank GetLowestRank();
+        int GetLowestRank();
 
         List<Player> GetAllPlayers();
+
+        Player GetPlayer(string playerId);
 
         List<Match> GetAllMatches();
 
         List<Match> GetAllMatchesForPlayer(Player player);
+
+        void SaveMatch(Match match);
+
+        Match GetMatch(string matchId);
+
+        void DeleteMatch(string matchId);
     }
 }

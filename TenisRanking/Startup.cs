@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using TenisRanking.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TenisRanking.MatchProvider;
 
 namespace TenisRanking
 {
@@ -41,6 +42,7 @@ namespace TenisRanking
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddTransient<IDbContextWrapper, DbContextWrapper>();
+            services.AddTransient<IMatchProvider, MatchProvider.MatchProvider>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

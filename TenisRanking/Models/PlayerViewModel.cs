@@ -9,10 +9,10 @@ namespace TenisRanking.Models
     {
         public Player Player { get; set; }
 
-        public Rank Rank { get; set; }
-
         public List<Match> PlayedMatches { get; set; }
 
         public List<Match> PlannedMatches { get; set; }
+
+        public List<Match> ChallengedMatches { get; set; }
     }
 }

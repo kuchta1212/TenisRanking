@@ -8,17 +8,19 @@ namespace TenisRanking.Utils
 {
     public static class Utils
     {
-        public static Rank GetNextRank(Rank rank)
+        public static int GetLevel(int rank)
         {
-            var maxCountToThisLevel = 0;
-            for (var i = 0; i <= rank.Level; i++)
+            var level = 0;
+            var addition = 2;
+            var checkedRank= 1;
+            while (rank > checkedRank)
             {
-                maxCountToThisLevel += i + 1;
+                checkedRank += addition;
+                addition++;
+                level++;
             }
 
-            return maxCountToThisLevel < rank.Ranking + 1 
-                ? new Rank() {Level = rank.Level, Ranking = rank.Ranking + 1} 
-                : new Rank() {Level = rank.Level + 1, Ranking = rank.Ranking + 1};
+            return level;
         }
     }
 }

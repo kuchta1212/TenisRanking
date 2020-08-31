@@ -77,8 +77,8 @@ namespace TenisRanking.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var rank = Utils.Utils.GetNextRank(this.context.GetLowestRank());
-                var user = new Player() { UserName = Input.Name, Email = Input.Email, LastPlayedMatch = new DateTime(1900,1,1), Rank = JsonConvert.SerializeObject(rank)};
+                var rank = this.context.GetLowestRank();
+                var user = new Player() { UserName = Input.Name, Email = Input.Email, LastPlayedMatch = new DateTime(1900,1,1), Rank = ++rank};
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

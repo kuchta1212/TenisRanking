@@ -7,7 +7,11 @@ namespace TenisRanking.Models
 {
     public enum MatchStatus
     {
-        Planned,
+        Chellanged,
+
+        Accepted,
+
+        Refused,
 
         Played
 

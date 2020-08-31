@@ -2,6 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 
+@using TenisRanking.Utils
 @model IEnumerable<PlayerViewModel>
 
 
@@ -10,26 +11,26 @@
         var level = -1;
         foreach (var playerViewModel in Model)
         {
-            if (playerViewModel.Rank.Level != level && level != -1)
+            var playerLevel = Utils.GetLevel(playerViewModel.Player.Rank);
+            if (playerLevel != level && level != -1)
             {
                 @Html.Raw("</div>")
 
             }
-            if (playerViewModel.Rank.Level != level)
+            if (playerLevel != level)
             {
                 @Html.Raw("<div class=\"row\">")
             }
             <div class="card" style="width: 20rem;">
                 <div class="card-body">
                     <h5 class="card-title">@playerViewModel.Player.UserName</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">@playerViewModel.Rank.Level</h6>
-                    <h6 class="card-subtitle mb-2 text-muted">@playerViewModel.Rank.Ranking</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">@playerLevel</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">@playerViewModel.Player.Rank</h6>
                     <h6 class="card-subtitle mb-2 text-muted">@playerViewModel.Player.LastPlayedMatch</h6>
-                    <p>@string.Join(", ", playerViewModel.Matches)</p>
                     <button class="btn btn-primary" asp-controller="Home" asp-action="Challange">Vyzvat</button>
                 </div>
             </div>
-            level = playerViewModel.Rank.Level;
+            level = playerLevel;
         }
     }
 </div>

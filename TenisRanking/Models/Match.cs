@@ -29,6 +29,8 @@ namespace TenisRanking.Models
 
         public int SecondSetChellanger { get; set; }
 
+        public int ThirdSetChellanger { get; set; }
+
         public DateTime DateOfGame { get; set; }
 
         public MatchStatus Status { get; set; }
