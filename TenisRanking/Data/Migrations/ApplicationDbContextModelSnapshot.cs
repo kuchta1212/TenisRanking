@@ -208,6 +208,10 @@ namespace TenisRanking.Data.Migrations
 
                     b.Property<int>("SecondSetDefender");
 
+                    b.Property<int>("Status");
+
+                    b.Property<int>("ThirdSetChellanger");
+
                     b.Property<int>("ThirdSetDefender");
 
                     b.HasKey("Id");
@@ -221,9 +225,7 @@ namespace TenisRanking.Data.Migrations
 
                     b.Property<DateTime>("LastPlayedMatch");
 
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Rank");
+                    b.Property<int>("Rank");
 
                     b.ToTable("Player");
 

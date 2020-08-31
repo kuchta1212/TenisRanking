@@ -8,6 +8,12 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20200811154426_init-migration.cs" />
     <Compile Remove="Data\Migrations\20200811154426_init-migration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200811160238_Iit.cs" />
+    <Compile Remove="Data\Migrations\20200811160238_Iit.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200825214913_Mtc.cs" />
+    <Compile Remove="Data\Migrations\20200825214913_Mtc.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200831192025_Player_Match.cs" />
+    <Compile Remove="Data\Migrations\20200831192025_Player_Match.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

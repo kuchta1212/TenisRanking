@@ -18,6 +18,12 @@ namespace TenisRanking.Data
 
         List<Match> GetAllMatchesForPlayer(Player player);
 
+        List<Match> GetAllPlayedMatchesForPlayer(string playerId);
+
+        List<Match> GetAllPlannedMatchesForPlayer(string playerId);
+
+        List<Match> GetAllChellangedMatchesForPlayer(string playerId);
+
         void SaveMatch(Match match);
 
         Match GetMatch(string matchId);

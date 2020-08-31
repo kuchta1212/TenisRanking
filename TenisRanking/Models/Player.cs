@@ -8,8 +8,6 @@ namespace TenisRanking.Models
 {
     public class Player : IdentityUser
     {
-        public string Name { get; set; }
-
         public DateTime LastPlayedMatch { get; set; }
 
         public int Rank { get; set; }

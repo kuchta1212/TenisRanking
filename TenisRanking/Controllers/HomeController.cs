@@ -29,18 +29,18 @@ namespace TenisRanking.Controllers
 
         public IActionResult Index()
         {
-            var models = new List<PlayerViewModel>();
-            var players = this.context.GetAllPlayers();
-
-            foreach (var player in players)
+            var models = new ViewModel()
             {
-                var model = new PlayerViewModel()
-                {
-                    Player = player,
-                    PlayedMatches = this.context.GetAllMatchesForPlayer(player)
-                };
+                Players = this.context.GetAllPlayers()
+            };
 
-                models.Add(model);
+            if (this.User.Identity.IsAuthenticated)
+            {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                models.PlayedMatches = this.context.GetAllPlayedMatchesForPlayer(userId);
+                models.PlannedMatches = this.context.GetAllPlannedMatchesForPlayer(userId);
+                models.ChallengedMatches = this.context.GetAllChellangedMatchesForPlayer(userId);
+                models.AllMatches = this.context.GetAllMatches();
             }
 
             return View(models);

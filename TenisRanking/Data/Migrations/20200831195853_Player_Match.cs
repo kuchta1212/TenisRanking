@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TenisRanking.Data.Migrations
 {
-    public partial class Iit : Migration
+    public partial class Player_Match : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,12 +18,7 @@ namespace TenisRanking.Data.Migrations
                 table: "AspNetUsers",
                 nullable: true);
 
-            migrationBuilder.AddColumn<string>(
-                name: "Name",
-                table: "AspNetUsers",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.AddColumn<int>(
                 name: "Rank",
                 table: "AspNetUsers",
                 nullable: true);
@@ -33,11 +28,16 @@ namespace TenisRanking.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    PlayerOneName = table.Column<string>(nullable: true),
-                    PlayerTwoName = table.Column<string>(nullable: true),
-                    AmountOfGamesPlayerOne = table.Column<int>(nullable: false),
-                    AmountOfGamesPlayerTwo = table.Column<int>(nullable: false),
-                    DateOfGame = table.Column<DateTime>(nullable: false)
+                    Defender = table.Column<string>(nullable: true),
+                    Chellanger = table.Column<string>(nullable: true),
+                    FirstSetDefender = table.Column<int>(nullable: false),
+                    SecondSetDefender = table.Column<int>(nullable: false),
+                    ThirdSetDefender = table.Column<int>(nullable: false),
+                    FirstSetChellanger = table.Column<int>(nullable: false),
+                    SecondSetChellanger = table.Column<int>(nullable: false),
+                    ThirdSetChellanger = table.Column<int>(nullable: false),
+                    DateOfGame = table.Column<DateTime>(nullable: false),
+                    Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,10 +56,6 @@ namespace TenisRanking.Data.Migrations
 
             migrationBuilder.DropColumn(
                 name: "LastPlayedMatch",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "Name",
                 table: "AspNetUsers");
 
             migrationBuilder.DropColumn(
