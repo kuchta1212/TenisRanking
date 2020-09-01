@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using TenisRanking.Data;
+using TenisRanking.Email;
 using TenisRanking.MatchProvider;
 using TenisRanking.Models;
 
@@ -19,8 +20,9 @@ namespace TenisRanking.Controllers
     {
         private readonly IDbContextWrapper context;
         private readonly IMatchProvider matchProvider;
+        private readonly IEmailController emailController;
 
-        public HomeController(IDbContextWrapper context, IMatchProvider matchProvider)
+        public HomeController(IDbContextWrapper context, IMatchProvider matchProvider, IEmailController emailController)
         {
             this.context = context;
             this.matchProvider = matchProvider;
@@ -57,7 +59,7 @@ namespace TenisRanking.Controllers
 
             this.context.SaveMatch(match);
 
-            //this.emailController.SendChallangeEmail();
+            this.emailController.SendChallangeEmail();
 
             return RedirectToAction("Index");
         } 
@@ -69,7 +71,7 @@ namespace TenisRanking.Controllers
 
             this.context.SaveMatch(match);
 
-            //this.emailController.SendChallangeAcceptedEmail();
+            this.emailController.SendChallangeAcceptedEmail();
 
             return RedirectToAction("Index");
         }
@@ -81,7 +83,7 @@ namespace TenisRanking.Controllers
 
             this.context.SaveMatch(match);
 
-            //this.emailController.SendChallangeAcceptedEmail();
+            this.emailController.SendChallangeRefusedEmail();
 
             return RedirectToAction("Index");
         }

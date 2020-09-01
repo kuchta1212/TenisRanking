@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using TenisRanking.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TenisRanking.Email;
 using TenisRanking.MatchProvider;
 
 namespace TenisRanking
@@ -41,9 +42,16 @@ namespace TenisRanking
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.Configure<EmailOptions>(opt =>
+            {
+                opt.SendGridKeyApi = Configuration.GetSection("Email").GetValue<string>("SendGridKeyApi");
+                opt.SenderEmail = Configuration.GetSection("Email").GetValue<string>("SenderEmail");
+                opt.SenderName = Configuration.GetSection("Email").GetValue<string>("SenderName");
+            });
+
             services.AddTransient<IDbContextWrapper, DbContextWrapper>();
             services.AddTransient<IMatchProvider, MatchProvider.MatchProvider>();
-
+            services.AddTransient<IEmailController, EmailController>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
