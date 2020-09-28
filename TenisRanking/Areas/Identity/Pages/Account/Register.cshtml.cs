@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using TenisRanking.Data;
+using TenisRanking.Email;
 using TenisRanking.Models;
 
 namespace TenisRanking.Areas.Identity.Pages.Account
@@ -21,14 +22,14 @@ namespace TenisRanking.Areas.Identity.Pages.Account
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
-        private readonly IEmailSender _emailSender;
+        private readonly IEmailController _emailSender;
         private readonly IDbContextWrapper context;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender,
+            IEmailController emailSender,
             IDbContextWrapper context)
         {
             _userManager = userManager;
@@ -78,11 +79,14 @@ namespace TenisRanking.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var rank = this.context.GetLowestRank();
-                var user = new Player() { UserName = Input.Name, Email = Input.Email, LastPlayedMatch = new DateTime(1900,1,1), Rank = ++rank};
+                var user = new Player() {UserName = Input.Email, Email = Input.Email, Rank = rank +1, LastPlayedMatch = new DateTime(1900, 1, 1), PlayerName = Input.Name};
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     //var callbackUrl = Url.Page(

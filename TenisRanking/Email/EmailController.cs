@@ -49,5 +49,10 @@ namespace TenisRanking.Email
         {
             throw new NotImplementedException();
         }
+
+        public Task<bool> SendRegisterConfirmationEmail(string to, string name, string subject, string body)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

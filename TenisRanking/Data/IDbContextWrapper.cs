@@ -24,7 +24,11 @@ namespace TenisRanking.Data
 
         List<Match> GetAllChellangedMatchesForPlayer(string playerId);
 
+        List<Match> GetAllRefusedMatches(string playerId);
+
         void SaveMatch(Match match);
+
+        void UpdateMatch(Match match);
 
         Match GetMatch(string matchId);
 

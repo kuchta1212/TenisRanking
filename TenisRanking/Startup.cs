@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TenisRanking.Data;
@@ -14,6 +16,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TenisRanking.Email;
 using TenisRanking.MatchProvider;
+using TenisRanking.Models;
+using TenisRanking.Utils;
 
 namespace TenisRanking
 {
@@ -49,9 +53,24 @@ namespace TenisRanking
                 opt.SenderName = Configuration.GetSection("Email").GetValue<string>("SenderName");
             });
 
+            services.AddLocalization(o => o.ResourcesPath = "Resources");
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("cs-CZ"),
+                };
+                options.DefaultRequestCulture = new RequestCulture("cs-CZ", "cd-CZ");
+
+                options.SupportedCultures = supportedCultures;
+
+                options.SupportedUICultures = supportedCultures;
+            });
+
             services.AddTransient<IDbContextWrapper, DbContextWrapper>();
             services.AddTransient<IMatchProvider, MatchProvider.MatchProvider>();
             services.AddTransient<IEmailController, EmailController>();
+            services.AddTransient<IViewMessageFactory, ViewMessageFactory>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

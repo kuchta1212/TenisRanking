@@ -22,5 +22,13 @@ namespace TenisRanking.Utils
 
             return level;
         }
+
+        public static bool CanChellange(int chellangerRank, int deffenderRank)
+        {
+            var chellengerLevel = Utils.GetLevel(chellangerRank);
+            var deffenderLevel = Utils.GetLevel(deffenderRank);
+
+            return (chellengerLevel - deffenderLevel) == 1 || ((chellengerLevel - deffenderLevel == 0) && deffenderRank < chellangerRank);
+        }
     }
 }

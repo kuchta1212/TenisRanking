@@ -11,5 +11,7 @@ namespace TenisRanking.Models
         public DateTime LastPlayedMatch { get; set; }
 
         public int Rank { get; set; }
+
+        public string PlayerName { get; set; }
     }
 }

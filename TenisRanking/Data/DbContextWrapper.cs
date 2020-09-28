@@ -47,22 +47,42 @@ namespace TenisRanking.Data
 
         public List<Match> GetAllPlayedMatchesForPlayer(string playerId)
         {
-            return this.GetMatchesForPlayer(playerId, MatchStatus.Played);
+            return this.dbContext.Matches
+                .Where(m => (m.Defender == playerId || m.Chellanger == playerId) && m.Status == MatchStatus.Played)
+                .ToList();
         }
 
         public List<Match> GetAllPlannedMatchesForPlayer(string playerId)
         {
-            return this.GetMatchesForPlayer(playerId, MatchStatus.Accepted);
+            return this.dbContext.Matches
+                .Where(m => (m.Defender == playerId || m.Chellanger == playerId) && m.Status == MatchStatus.Accepted)
+                .ToList();
         }
 
         public List<Match> GetAllChellangedMatchesForPlayer(string playerId)
         {
-            return this.GetMatchesForPlayer(playerId, MatchStatus.Chellanged);
+            return this.dbContext.Matches
+                .Where(m => m.Defender == playerId && m.Status == MatchStatus.Chellanged)
+                .ToList();
+        }
+
+        public List<Match> GetAllRefusedMatches(string playerId)
+        {
+            return this.dbContext.Matches
+                .Where(m => m.Chellanger == playerId && m.Status == MatchStatus.Refused)
+                .ToList();
         }
 
         public void SaveMatch(Match match)
         {
             this.dbContext.Add(match);
+
+            this.dbContext.SaveChanges();
+        }
+
+        public void UpdateMatch(Match match)
+        {
+            this.dbContext.Update(match);
 
             this.dbContext.SaveChanges();
         }
@@ -78,15 +98,5 @@ namespace TenisRanking.Data
 
             this.dbContext.SaveChanges();
         }
-
-        private List<Match> GetMatchesForPlayer(string playerId, MatchStatus matchStatus)
-        {
-            return this.dbContext.Matches
-                .Where(m => (m.Defender == playerId || m.Chellanger == playerId) && m.Status == matchStatus)
-                .ToList();
-
-        }
-
-
     }
 }

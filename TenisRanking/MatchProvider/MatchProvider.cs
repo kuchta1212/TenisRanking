@@ -45,6 +45,8 @@ namespace TenisRanking.MatchProvider
             {
                 this.AdjustRank(chellanger, deffender);
             }
+
+            this.context.UpdateMatch(match);
         }
 
         private bool IsChellangerWinner(string firstSet, string secondSet, string thirdSet)

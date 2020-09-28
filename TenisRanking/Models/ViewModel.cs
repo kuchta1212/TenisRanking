@@ -7,6 +7,8 @@ namespace TenisRanking.Models
 {
     public class ViewModel
     {
+        public Player Player { get; set; }
+
         public List<Player> Players { get; set; }
 
         public List<Match> PlayedMatches { get; set; }
@@ -18,5 +20,7 @@ namespace TenisRanking.Models
         public List<Match> ChallengedMatches { get; set; }
 
         public List<Match> AllMatches { get; set; }
+
+        public ViewMessage ViewMessage { get; set; }
     }
 }
