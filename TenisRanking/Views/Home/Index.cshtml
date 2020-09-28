@@ -44,23 +44,25 @@
                     }
                     if (playerLevel != level)
                     {
-                        @Html.Raw("<div class=\"row\">")
+                        @Html.Raw("<div class=\"row justify-content-center\">")
                     }
 
                     @(Model.Player.Id == player.Id
                                           ? Html.Raw("<div class=\"card text-white bg-secondary opacity-card\" style=\"width: 20rem;\">")
                                           : Html.Raw("<div class=\"card opacity-card\" style=\"width: 20rem;\">"))
 
-                    <div class="card-header">
-                        Level: @playerLevel Rank: @player.Rank
-                    </div>
+                    @*@(player.Rank == 1
+                          ? Html.Raw("<div class=\"card opacity-card leader-card\" style=\"width: 20rem;\">")
+                          : Html.Raw("<div class=\"card opacity-card\" style=\"width: 20rem;\">"))*@
+
+                    <div class="card-header">Level: @playerLevel Rank: @player.Rank</div>
                     <div class="card-body">
                         <h5 class="card-title">@player.PlayerName</h5>
                         <h6 class="card-subtitle mb-2">Last Matched: @player.LastPlayedMatch</h6>
                         @if (SignInManager.IsSignedIn(User) && Model.Player.Id != player.Id && Utils.CanChellange(Model.Player.Rank, player.Rank))
                         {
                             <form method="Post">
-                                <button class="btn btn-primary btn-block" asp-controller="Home" asp-action="Challenge" asp-route-deffenderId="@player.Id">Vyzvat</button>
+                                <button class="btn btn-secondary btn-block" asp-controller="Home" asp-action="Challenge" asp-route-deffenderId="@player.Id">Vyzvat</button>
                             </form>
                         }
                     </div>
@@ -74,7 +76,7 @@
 
     @if (SignInManager.IsSignedIn(User))
     {
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-md opacity-table">
             <h3>Výzvy</h3>
             <table class="table table-striped">
@@ -87,7 +89,7 @@
                             </td>
                             <td>
                                 <form method="Post">
-                                    <button class="btn btn-light" asp-controller="Home" asp-action="AcceptChallange" asp-route-matchId="@challengedMatch.Id">Přijmout</button>
+                                    <button class="btn btn-secondary" asp-controller="Home" asp-action="AcceptChallange" asp-route-matchId="@challengedMatch.Id">Přijmout</button>
                                 </form>
                             </td>
                             <td>
@@ -120,7 +122,7 @@
                             </td>
                             <td>
                                 <form method="Post">
-                                    <button class="btn btn-light" asp-controller="Home" asp-action="AddMatch" asp-route-matchId="@plannedMatch.Id">Zadat výsledek</button>
+                                    <button class="btn btn-secondary" asp-controller="Home" asp-action="AddMatch" asp-route-matchId="@plannedMatch.Id">Zadat výsledek</button>
                                 </form>
                             </td>
                         </tr>
