@@ -33,5 +33,8 @@ namespace TenisRanking.Data
         Match GetMatch(string matchId);
 
         void DeleteMatch(string matchId);
+
+        List<Player> GetPlayersInRanks(int starterRank, int endRank);
+        void UpdatePlayer(Player player);
     }
 }

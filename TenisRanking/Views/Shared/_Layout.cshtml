@@ -3,17 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TenisRanking</title>
+    <title>@ViewData["Title"] - Tenis Svoboda</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    @*<link rel="stylesheet" href="~/css/site.css" />*@
-    @*<script src="~/js/site.min.js"></script>*@
-
 
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Tenis Ranking</a>
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Svoboda žebříček</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -36,7 +33,7 @@
         <p>&copy; 2020 - jku</p>
     </footer>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
@@ -53,7 +50,7 @@
 
     .opacity-card {
         background-color: rgba(245, 245, 245, 1);
-        opacity: .8;
+        opacity: .9;
     }
 
     .opacity-card:hover {
@@ -62,7 +59,7 @@
 
     .opacity-table {
         background-color: rgba(245, 245, 245, 1);
-        opacity: .4;
+        opacity: .8;
     }
 
     .opacity-table:hover {
@@ -75,3 +72,43 @@
     }
 
 </style>
+
+<script type="text/javascript">
+
+    $(function () {
+        $('body').on('click',
+            '.modal-link',
+            function (e) {
+                var url = $('#AddMatchResult').data('url');
+                var success = function (data) { $('#add-result-modal').html(data); };
+                var error = function(error) {
+                    console.log(error);
+                };
+
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    success: success,
+                    error: error
+                });
+            });
+
+        // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+        $('body').on('click',
+            '.modal-close-btn',
+            function () {
+                $('#add-result-modal').modal('hide');
+            });
+
+        //clear modal cache, so that new content can be loaded
+        $('#add-result-modal').on('hidden.bs.modal',
+            function () {
+                $(this).removeData('bs.modal');
+            });
+
+        $('#CancelModal').on('click',
+            function () {
+                return false;
+            });
+    });
+</script>

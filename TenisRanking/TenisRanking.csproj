@@ -17,14 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\background.jpg" />
     <None Remove="Views\Shared\background.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\background.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="wwwroot\images\background.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -42,6 +38,12 @@
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
     <Folder Include="Identity\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\images\background.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

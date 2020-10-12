@@ -98,5 +98,17 @@ namespace TenisRanking.Data
 
             this.dbContext.SaveChanges();
         }
+
+        public List<Player> GetPlayersInRanks(int higherRank, int lowerRank)
+        {
+            return this.dbContext.Players.Where(p => p.Rank > higherRank && p.Rank < lowerRank).ToList();
+        }
+
+        public void UpdatePlayer(Player player)
+        {
+            this.dbContext.Update(player);
+            this.dbContext.SaveChanges();
+        }
     }
 }
+

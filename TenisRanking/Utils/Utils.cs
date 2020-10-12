@@ -30,5 +30,18 @@ namespace TenisRanking.Utils
 
             return (chellengerLevel - deffenderLevel) == 1 || ((chellengerLevel - deffenderLevel == 0) && deffenderRank < chellangerRank);
         }
+
+        public static bool IsChellangerWinner(int firstSetChellanger, int secondSetChellanger, int thirdSetChellanger, int firstSetDeffender, int secondSetDeffender, int thirdSetDeffender)
+        {
+            if (firstSetChellanger > firstSetDeffender || secondSetChellanger > secondSetDeffender)
+            {
+                if ((thirdSetChellanger == 0 && thirdSetDeffender == 0) || thirdSetChellanger > thirdSetDeffender)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

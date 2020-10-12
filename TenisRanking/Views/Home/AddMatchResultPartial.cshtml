@@ -1,0 +1,83 @@
+﻿@model MatchViewModel
+
+<div class="modal-body">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addMatchResultTitle">@Model.Challanger vs @Model.Deffender</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>x</span>
+                </button>
+            </div>
+            <form id="AddMatchResultDialogForm" method="post", asp-controller="Home" asp-action="AddMatchResult">
+                <div class="modal-body">
+                    <div class="form-row justify-content-center">
+                        <h6>1. set</h6>
+                        <div class="col">
+                            <input asp-for="FirstSetChellanger" class="form-control" min="0" max="7"/>
+                        </div>
+                        <div class="col">
+                            <input asp-for="FirstSetDefender" class="form-control" min="0" max="7"/>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-row justify-content-center">
+                        <h6>2. set</h6>
+                        <div class="col">
+                            <input asp-for="SecondSetChellanger" class="form-control" min="0" max="7"/>
+                        </div>
+                        <div class="col">
+                            <input asp-for="SecondSetDefender" class="form-control" min="0" max="7"/>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-row justify-content-center">
+                        <h6>3. set</h6>
+                        <div class="col">
+                            <input asp-for="ThirdSetChellanger" class="form-control" />
+                        </div>
+                        <div class="col">
+                            <input asp-for="ThirdSetDefender" class="form-control" />
+                        </div>
+                    </div>
+                    <div>
+                        <input asp-for="MatchId" value="@Model.MatchId" hidden />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-save="modal">Zadat</button>
+                    <button type="button" class="btn btn-secondary modal-close-btn" data-dismiss="modal">Zavřít</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(function () {
+        $('body').on('onload',
+            '.modal-link',
+            function (e) {
+                var url = $('#AddMatchResult').data('url');
+                var success = function (data) { $('#add-result-modal').html(data); };
+                var error = function(error) {
+                    console.log(error);
+                };
+
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    success: success,
+                    error: error
+                });
+            });
+
+        $('body').on('click',
+            '.modal-close-btn',
+            function () {
+                $('#add-result-modal').modal('hide');
+            });
+    });
+</script>
+

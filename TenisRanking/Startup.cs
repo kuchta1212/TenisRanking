@@ -60,7 +60,7 @@ namespace TenisRanking
                 {
                     new CultureInfo("cs-CZ"),
                 };
-                options.DefaultRequestCulture = new RequestCulture("cs-CZ", "cd-CZ");
+                options.DefaultRequestCulture = new RequestCulture("cs-CZ", "cs-CZ");
 
                 options.SupportedCultures = supportedCultures;
 

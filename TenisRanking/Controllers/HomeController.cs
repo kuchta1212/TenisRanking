@@ -144,11 +144,29 @@ namespace TenisRanking.Controllers
             
         }
 
-        public IActionResult AddMatchResult(string deffenderId, string challengerId, string matchId, string firstSet, string secondSet, string thirdSet)
+        [HttpGet]
+        public PartialViewResult InitMatchResult(string matchId)
+        {
+            var match = this.context.GetMatch(matchId);
+            var challanger = this.context.GetPlayer(match.Chellanger);
+            var deffender = this.context.GetPlayer(match.Defender);
+
+            var viewModel = new MatchViewModel()
+            {
+                MatchId = matchId,
+                Challanger = challanger.PlayerName,
+                Deffender = deffender.PlayerName
+            };
+
+            return PartialView("AddMatchResultPartial", viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult AddMatchResult(string MatchId, string FirstSetChellanger, string SecondSetChellanger, string ThirdSetChellanger, string FirstSetDefender, string SecondSetDefender, string ThirdSetDefender)
         {
             try
             {
-                this.matchProvider.SetFinalMatchResult(deffenderId, challengerId, matchId, firstSet, secondSet, thirdSet);
+                this.matchProvider.SetFinalMatchResult(MatchId, FirstSetChellanger, SecondSetChellanger, ThirdSetChellanger, FirstSetDefender, SecondSetDefender, ThirdSetDefender);
 
                 return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ResultAdded });
             }
@@ -156,7 +174,6 @@ namespace TenisRanking.Controllers
             {
                 return RedirectToAction("Index", new { status = MessageStatus.ERROR.ToString(), message = e.ToString() });
             }
-            
         }
     }
 }

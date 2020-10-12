@@ -7,6 +7,6 @@ namespace TenisRanking.MatchProvider
 {
     public interface IMatchProvider
     {
-        void SetFinalMatchResult(string deffenderId, string challengerId, string matchId, string firstSet, string secondSet, string thirdSet);
+        void SetFinalMatchResult(string matchId, string firstSetChellanger, string secondSetChellanger, string thirdSetChellanger, string firstSetDefender, string secondSetDefender, string thirdSetDefender);
     }
 }

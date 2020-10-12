@@ -37,14 +37,16 @@ namespace TenisRanking.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [Display(Name = "Email")]
             [EmailAddress]
             public string Email { get; set; }
 
             [Required]
+            [Display(Name = "Heslo")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Zapamatuj si mě?")]
             public bool RememberMe { get; set; }
         }
 
