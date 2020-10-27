@@ -34,7 +34,7 @@ namespace TenisRanking.Data
 
         void DeleteMatch(string matchId);
 
-        List<Player> GetPlayersInRanks(int starterRank, int endRank);
+        List<Player> GetPlayersInRanks(int starterRank, int endRank, bool includeEdges = false);
         void UpdatePlayer(Player player);
     }
 }

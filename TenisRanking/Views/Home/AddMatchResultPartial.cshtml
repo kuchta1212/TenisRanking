@@ -11,6 +11,14 @@
             </div>
             <form id="AddMatchResultDialogForm" method="post", asp-controller="Home" asp-action="AddMatchResult">
                 <div class="modal-body">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="radio" aria-label="Radio button for following text input">
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Text input with radio button">
+                    </div>
                     <div class="form-row justify-content-center">
                         <h6>1. set</h6>
                         <div class="col">
@@ -20,7 +28,7 @@
                             <input asp-for="FirstSetDefender" class="form-control" min="0" max="7"/>
                         </div>
                     </div>
-                    <br />
+                    <br/>
                     <div class="form-row justify-content-center">
                         <h6>2. set</h6>
                         <div class="col">
@@ -30,18 +38,18 @@
                             <input asp-for="SecondSetDefender" class="form-control" min="0" max="7"/>
                         </div>
                     </div>
-                    <br />
+                    <br/>
                     <div class="form-row justify-content-center">
                         <h6>3. set</h6>
                         <div class="col">
-                            <input asp-for="ThirdSetChellanger" class="form-control" />
+                            <input asp-for="ThirdSetChellanger" class="form-control"/>
                         </div>
                         <div class="col">
-                            <input asp-for="ThirdSetDefender" class="form-control" />
+                            <input asp-for="ThirdSetDefender" class="form-control"/>
                         </div>
                     </div>
                     <div>
-                        <input asp-for="MatchId" value="@Model.MatchId" hidden />
+                        <input asp-for="MatchId" value="@Model.MatchId" hidden/>
                     </div>
                 </div>
                 <div class="modal-footer">

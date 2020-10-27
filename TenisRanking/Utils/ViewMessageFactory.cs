@@ -9,9 +9,9 @@ namespace TenisRanking.Models
 {
     public class ViewMessageFactory : IViewMessageFactory
     {
-        private readonly IStringLocalizer<Resources.Resources> resources;
+        private readonly IStringLocalizer<Resources.Resource> resources;
 
-        public ViewMessageFactory(IStringLocalizer<Resources.Resources> resources)
+        public ViewMessageFactory(IStringLocalizer<Resources.Resource> resources)
         {
             this.resources = resources;
         }

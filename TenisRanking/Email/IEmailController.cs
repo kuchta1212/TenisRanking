@@ -7,11 +7,11 @@ namespace TenisRanking.Email
 {
     public interface IEmailController
     {
-        Task<bool> SendChallangeEmail();
+        Task<bool> SendChallangeEmail(string mailTo, string name, string challanger);
 
-        Task<bool> SendChallangeAcceptedEmail();
+        Task<bool> SendChallangeAcceptedEmail(string mailTo, string name, string deffender);
 
-        Task<bool> SendChallangeRefusedEmail();
+        Task<bool> SendChallangeRefusedEmail(string mailTo, string name, string deffender);
 
         Task<bool> SendRegisterConfirmationEmail(string to, string name, string subject, string body);
     }

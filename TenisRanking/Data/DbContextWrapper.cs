@@ -62,7 +62,7 @@ namespace TenisRanking.Data
         public List<Match> GetAllChellangedMatchesForPlayer(string playerId)
         {
             return this.dbContext.Matches
-                .Where(m => m.Defender == playerId && m.Status == MatchStatus.Chellanged)
+                .Where(m => (m.Defender == playerId || m.Chellanger == playerId) && m.Status == MatchStatus.Chellanged)
                 .ToList();
         }
 
@@ -99,9 +99,11 @@ namespace TenisRanking.Data
             this.dbContext.SaveChanges();
         }
 
-        public List<Player> GetPlayersInRanks(int higherRank, int lowerRank)
+        public List<Player> GetPlayersInRanks(int higherRank, int lowerRank, bool includeEdges = false)
         {
-            return this.dbContext.Players.Where(p => p.Rank > higherRank && p.Rank < lowerRank).ToList();
+            return includeEdges
+                ? this.dbContext.Players.Where(p => p.Rank > higherRank && p.Rank <= lowerRank).ToList()
+                : this.dbContext.Players.Where(p => p.Rank > higherRank && p.Rank < lowerRank).ToList();
         }
 
         public void UpdatePlayer(Player player)

@@ -77,7 +77,9 @@ namespace TenisRanking.Controllers
 
                 this.context.SaveMatch(match);
 
-                //this.emailController.SendChallangeEmail();
+                var challenger = this.context.GetPlayer(match.Chellanger);
+                var deffender = this.context.GetPlayer(match.Defender);
+                this.emailController.SendChallangeEmail(deffender.UserName, deffender.PlayerName, challenger.PlayerName);
 
                 return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ChallengeSended });
             }
@@ -98,7 +100,9 @@ namespace TenisRanking.Controllers
 
                 this.context.UpdateMatch(match);
 
-                //this.emailController.SendChallangeAcceptedEmail();
+                var challenger = this.context.GetPlayer(match.Chellanger);
+                var deffender = this.context.GetPlayer(match.Defender);
+                this.emailController.SendChallangeAcceptedEmail(challenger.UserName, challenger.PlayerName, deffender.PlayerName);
 
                 return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ChallangeAccpeted});
             }
@@ -118,7 +122,9 @@ namespace TenisRanking.Controllers
 
                 this.context.UpdateMatch(match);
 
-                //this.emailController.SendChallangeRefusedEmail();
+                var challenger = this.context.GetPlayer(match.Chellanger);
+                var deffender = this.context.GetPlayer(match.Defender);
+                this.emailController.SendChallangeRefusedEmail(challenger.UserName, challenger.PlayerName, deffender.PlayerName);
 
                 return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ChallengeRefused });
             }

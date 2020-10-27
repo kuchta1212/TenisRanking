@@ -28,165 +28,216 @@
 }
 
 
-<div class="container-fluid">
+    <div class="container-fluid">
 
-    <div class="row">
-
-        <div class="col-lg-12">
-            @{
-                var level = -1;
-                foreach (var player in Model.Players)
-                {
-                    var playerLevel = Utils.GetLevel(player.Rank);
-                    if (playerLevel != level && level != -1)
+        <div class="row">
+            <div class="col-lg-12">
+                @{
+                    var level = -1;
+                    foreach (var player in Model.Players)
                     {
-                        @Html.Raw("</div>")
-
-                    }
-                    if (playerLevel != level)
-                    {
-                        @Html.Raw("<div class=\"row justify-content-center\">")
-                    }
-
-                    @(Model.Player.Id == player.Id
-                                  ? Html.Raw("<div class=\"card text-white bg-secondary opacity-card\" style=\"width: 20rem;\">")
-                                  : Html.Raw("<div class=\"card opacity-card\" style=\"width: 20rem;\">"))
-
-                    <div class="card-header">@player.Rank</div>
-                    <div class="card-body">
-                        <h5 class="card-title">@player.PlayerName</h5>
-                        <h6 class="card-subtitle mb-2">Poslední zápas:  @player.LastPlayedMatch.ToString("dd.MM yyyy")</h6>
-                        @if (SignInManager.IsSignedIn(User) && Model.Player.Id != player.Id && Utils.CanChellange(Model.Player.Rank, player.Rank))
+                        var playerLevel = Utils.GetLevel(player.Rank);
+                        if (playerLevel != level && level != -1)
                         {
-                            <form method="Post">
-                                <button class="btn btn-secondary btn-block" asp-controller="Home" asp-action="Challenge" asp-route-deffenderId="@player.Id">Vyzvat</button>
-                            </form>
+                            @Html.Raw("</div>")
+
                         }
-                    </div>
-                    @Html.Raw("</div>")
-                    level = playerLevel;
-                }
-            }
-        </div>
-    </div>
-    
-
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <div class="row justify-content-center">
-            <div class="col-md opacity-table">
-                <h3>Výzvy</h3>
-                <table class="table table-striped">
-                    <tbody>
-                    @foreach (var challengedMatch in Model.ChallengedMatches)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == challengedMatch.Chellanger).PlayerName)
-                            </td>
-                            <td>
-                                <form method="Post">
-                                    <button class="btn btn-secondary" asp-controller="Home" asp-action="AcceptChallange" asp-route-matchId="@challengedMatch.Id">Přijmout</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form method="Post">
-                                    <button class="btn btn-light" asp-controller="Home" asp-action="RefuseChallenge" asp-route-matchId="@challengedMatch.Id">Odmítnout</button>
-                                </form>
-                            </td>
-                        </tr>
-                    }
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md opacity-table">
-                <h3>Naplánované</h3>
-                <table class="table table-hover">
-                    <tbody>
-                    @foreach (var plannedMatch in Model.PlannedMatches)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == plannedMatch.Defender).PlayerName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == plannedMatch.Chellanger).PlayerName)
-                            </td>
-                            <td>
-                                <form method="Post">
-                                    <button class="btn btn-light" asp-controller="Home" asp-action="RefuseChallenge" asp-route-matchId="@plannedMatch.Id">Odmítnout</button>
-                                </form>
-                            </td>
-                            <td>
-                                <button id="AddMatchResult" class="btn btn-secondary modal-link" data-toggle="modal" data-target="#add-result-modal" data-url=@($"Home/InitMatchResult?matchId={@plannedMatch.Id}")>Zadat výsledek</button>
-                            </td>
-                        </tr>
-                    }
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md opacity-table">
-                <h2>Odmítnuté</h2>
-                <table class="table table-hover">
-                    <tbody>
-                    @foreach (var refusedMatch in Model.RefusedMatches)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == refusedMatch.Defender).PlayerName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == refusedMatch.Chellanger).PlayerName)
-                            </td>
-                            <td>
-                                <form method="Post">
-                                    <button class="btn btn-light" asp-controller="Home" asp-action="DeleteMatch" asp-route-matchId="@refusedMatch.Id">Smazat</button>
-                                </form>
-                            </td>
-                        </tr>
-                    }
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md opacity-table">
-                <h2>Odehranné</h2>
-                <table class="table table-hover">
-                    <tbody>
-                        @foreach (var playedMatch in Model.PlayedMatches)
+                        if (playerLevel != level)
                         {
-                            var isChellangerWinner = Utils.IsChellangerWinner(playedMatch.FirstSetChellanger, playedMatch.SecondSetChellanger, playedMatch.ThirdSetChellanger, playedMatch.FirstSetDefender, playedMatch.SecondSetDefender, playedMatch.ThirdSetDefender);
-                            if ((playedMatch.Chellanger == Model.Player.Id && isChellangerWinner) || (playedMatch.Defender == Model.Player.Id && !isChellangerWinner))
+                            @Html.Raw("<div class=\"row justify-content-center\">")
+                        }
+
+                        @(Model.Player.Id == player.Id
+                                              ? Html.Raw("<div class=\"card text-white bg-secondary opacity-card\" style=\"width: 20rem;\">")
+                                              : Html.Raw("<div class=\"card opacity-card\" style=\"width: 20rem;\">"))
+
+                        <div class="card-header">@player.Rank</div>
+                        <div class="card-body">
+                            <h5 class="card-title">@player.PlayerName</h5>
+                            <h6 class="card-subtitle mb-2">Poslední zápas:  @player.LastPlayedMatch.ToString("dd.MM yyyy")</h6>
+                            @if (SignInManager.IsSignedIn(User) && Model.Player.Id != player.Id && Utils.CanChellange(Model.Player.Rank, player.Rank))
                             {
-                                @Html.Raw("<tr class=\"bg-success\">")
+                                <form method="Post">
+                                    <button class="btn btn-secondary btn-block" asp-controller="Home" asp-action="Challenge" asp-route-deffenderId="@player.Id">Vyzvat</button>
+                                </form>
                             }
-                            else
+                        </div>
+                        @Html.Raw("</div>")
+                        level = playerLevel;
+                    }
+                }
+            </div>
+        </div>
+
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="row justify-content-center">
+                <div class="col-md opacity-table">
+                    <h3>Výzvy</h3>
+                    <table class="table table-striped">
+                        <tbody>
+                            @foreach (var challengedMatch in Model.ChallengedMatches)
                             {
-                                @Html.Raw("<tr class=\"bg-danger\">")
+                                if (challengedMatch.Defender == Model.Player.Id)
+                                {
+                                    <tr>
+                                        <td class="bg-danger">
+                                            <img src="images/icons/incoming.png" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == challengedMatch.Chellanger).PlayerName)
+                                        </td>
+                                        <td>
+                                            <form method="Post">
+                                                <button class="btn btn-secondary" asp-controller="Home" asp-action="AcceptChallange" asp-route-matchId="@challengedMatch.Id">Přijmout</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form method="Post">
+                                                <button class="btn btn-light" asp-controller="Home" asp-action="RefuseChallenge" asp-route-matchId="@challengedMatch.Id">Odmítnout</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr class="bg-success">
+                                        <td>
+                                            <img src="images/icons/outgoing.png" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == challengedMatch.Defender).PlayerName)
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <form method="Post">
+                                                <button class="btn btn-light" asp-controller="Home" asp-action="RefuseChallenge" asp-route-matchId="@challengedMatch.Id">Zrušit</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
                             }
-                                <td>
-                                    @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == playedMatch.Defender).PlayerName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == playedMatch.Chellanger).PlayerName)
-                                </td>
-                                <td>
-                                    @Html.Raw(playedMatch.FirstSetDefender + ":" + playedMatch.FirstSetChellanger)
-                                </td>
-                                <td>
-                                    @Html.Raw(playedMatch.SecondSetDefender + ":" + playedMatch.SecondSetChellanger)
-                                </td>
-                                <td>
-                                    @Html.Raw(playedMatch.ThirdSetDefender + ":" + playedMatch.ThirdSetChellanger)
-                                </td>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md opacity-table">
+                    <h3>Naplánované</h3>
+                    <table class="table table-hover">
+                        <tbody>
+                            @foreach (var plannedMatch in Model.PlannedMatches)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == plannedMatch.Defender).PlayerName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == plannedMatch.Chellanger).PlayerName)
+                                    </td>
+                                    <td>
+                                        <form method="Post">
+                                            <button class="btn btn-light" asp-controller="Home" asp-action="RefuseChallenge" asp-route-matchId="@plannedMatch.Id">Odmítnout</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <button id="AddMatchResult" class="btn btn-secondary modal-link" data-toggle="modal" data-target="#add-result-modal" data-url=@($"Home/InitMatchResult?matchId={@plannedMatch.Id}")>Zadat výsledek</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md opacity-table">
+                    <h2>Odmítnuté</h2>
+                    <table class="table table-hover">
+                        <tbody>
+                            @foreach (var refusedMatch in Model.RefusedMatches)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == refusedMatch.Defender).PlayerName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == refusedMatch.Chellanger).PlayerName)
+                                    </td>
+                                    <td>
+                                        <form method="Post">
+                                            <button class="btn btn-light" asp-controller="Home" asp-action="DeleteMatch" asp-route-matchId="@refusedMatch.Id">Smazat</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md opacity-table">
+                    <h2>Odehranné</h2>
+                    <table class="table table-hover">
+                        <tbody>
+                            @foreach (var playedMatch in Model.PlayedMatches)
+                            {
+                                var isChellangerWinner = Utils.IsChellangerWinner(playedMatch.FirstSetChellanger, playedMatch.SecondSetChellanger, playedMatch.ThirdSetChellanger, playedMatch.FirstSetDefender, playedMatch.SecondSetDefender, playedMatch.ThirdSetDefender);
+                                if ((playedMatch.Chellanger == Model.Player.Id && isChellangerWinner) || (playedMatch.Defender == Model.Player.Id && !isChellangerWinner))
+                                {
+                                    @Html.Raw("<tr class=\"bg-success\">")
+                                }
+                                else
+                                {
+                                    @Html.Raw("<tr class=\"bg-danger\">")
+                                }
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == playedMatch.Defender).PlayerName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == playedMatch.Chellanger).PlayerName)
+                            </td>
+                            <td>
+                                @Html.Raw(playedMatch.FirstSetDefender + ":" + playedMatch.FirstSetChellanger)
+                            </td>
+                            <td>
+                                @Html.Raw(playedMatch.SecondSetDefender + ":" + playedMatch.SecondSetChellanger)
+                            </td>
+                            <td>
+                                @Html.Raw(playedMatch.ThirdSetDefender + ":" + playedMatch.ThirdSetChellanger)
+                            </td>
                             @Html.Raw("</tr>")
                         }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    }
-</div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
+            <div class="row justify-content-center">
+                    <div class="col-lg-12 opacity-table">
+                        <h3>Všechny zápasy</h3>
+                        <table class="table table-hover">
+                            <tbody>
+                                @foreach (var match in Model.AllMatches)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == match.Defender).PlayerName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == match.Chellanger).PlayerName)
+                                        </td>
+                                        <td>
+                                            @Html.Raw(match.FirstSetDefender + ":" + match.FirstSetChellanger)
+                                        </td>
+                                        <td>
+                                            @Html.Raw(match.SecondSetDefender + ":" + match.SecondSetChellanger)
+                                        </td>
+                                        <td>
+                                            @Html.Raw(match.ThirdSetDefender + ":" + match.ThirdSetChellanger)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        }
+    </div>
 <div id="add-result-modal" class="modal" role="dialog">  
     <div class="modal-content">
     </div>

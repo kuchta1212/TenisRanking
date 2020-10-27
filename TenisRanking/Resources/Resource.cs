@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TenisRanking.Resources
 {
-    public class Resources
+    public class Resource
     {
     }
 }

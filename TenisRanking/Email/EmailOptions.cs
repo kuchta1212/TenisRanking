@@ -7,6 +7,8 @@ namespace TenisRanking.Email
 {
     public class EmailOptions
     {
+        public bool Enabled { get; set; }
+
         public string SendGridKeyApi { get; set; }
 
         public string SenderEmail { get; set; }

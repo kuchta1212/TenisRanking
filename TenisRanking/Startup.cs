@@ -14,7 +14,9 @@ using Microsoft.EntityFrameworkCore;
 using TenisRanking.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Quartz;
 using TenisRanking.Email;
+using TenisRanking.Job;
 using TenisRanking.MatchProvider;
 using TenisRanking.Models;
 using TenisRanking.Utils;
@@ -48,9 +50,24 @@ namespace TenisRanking
 
             services.Configure<EmailOptions>(opt =>
             {
+                opt.Enabled = Configuration.GetSection("Email").GetValue<bool>("Enabled");
                 opt.SendGridKeyApi = Configuration.GetSection("Email").GetValue<string>("SendGridKeyApi");
                 opt.SenderEmail = Configuration.GetSection("Email").GetValue<string>("SenderEmail");
                 opt.SenderName = Configuration.GetSection("Email").GetValue<string>("SenderName");
+            });
+
+            services.Configure<MatchDaysLimitOptions>(opt =>
+            {
+                opt.Enabled = Configuration.GetSection("Email").GetValue<bool>("Enabled");
+                opt.Days = int.Parse(Configuration.GetSection("MaxDaysLimitations").GetValue<string>("Days"));
+                opt.LevelDrop = int.Parse(Configuration.GetSection("MaxDaysLimitations").GetValue<string>("LevelDrop"));
+            });
+
+            services.Configure<MatchDaysLimitOptions>(opt =>
+            {
+                opt.Enabled = Configuration.GetSection("MaxDaysLimitations").GetValue<bool>("Enabled");
+                opt.Days = int.Parse(Configuration.GetSection("MaxDaysLimitations").GetValue<string>("Days"));
+                opt.LevelDrop = int.Parse(Configuration.GetSection("MaxDaysLimitations").GetValue<string>("LevelDrop"));
             });
 
             services.AddLocalization(o => o.ResourcesPath = "Resources");
@@ -58,14 +75,43 @@ namespace TenisRanking
             {
                 var supportedCultures = new[]
                 {
-                    new CultureInfo("cs-CZ"),
+                    new CultureInfo("en-US"),
                 };
-                options.DefaultRequestCulture = new RequestCulture("cs-CZ", "cs-CZ");
+                options.DefaultRequestCulture = new RequestCulture("en-US", "en-US");
 
                 options.SupportedCultures = supportedCultures;
 
                 options.SupportedUICultures = supportedCultures;
             });
+
+            var jobKey = new JobKey("matchLimitJob");
+            services.AddTransient<MatchCheckerJob>();
+            services.AddQuartz(q =>
+            {
+                q.SchedulerId = "Scheduler-Core";
+                q.SchedulerName = "Scheduler-Core";
+                q.UseMicrosoftDependencyInjectionScopedJobFactory();
+
+                q.AddJob<MatchCheckerJob>(j => j
+                    .WithIdentity(jobKey)
+                );
+
+                q.AddTrigger(t => t
+                    .WithIdentity("Cron Trigger")
+                    .ForJob(jobKey)
+                    //.StartAt(DateBuilder.TodayAt(23,55,00))
+                    .StartNow()
+                    .WithSimpleSchedule(x => x.WithInterval(TimeSpan.FromSeconds(30)).RepeatForever())
+                    .WithDescription("match limit trigger")
+                );             
+            });
+
+            services.AddQuartzServer(options =>
+            {
+                // when shutting down we want jobs to complete gracefully
+                options.WaitForJobsToComplete = true;
+            });
+
 
             services.AddTransient<IDbContextWrapper, DbContextWrapper>();
             services.AddTransient<IMatchProvider, MatchProvider.MatchProvider>();

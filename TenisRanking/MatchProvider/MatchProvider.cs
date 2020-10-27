@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using TenisRanking.Data;
 using TenisRanking.Models;
 
@@ -10,10 +11,12 @@ namespace TenisRanking.MatchProvider
     public class MatchProvider : IMatchProvider
     {
         private readonly IDbContextWrapper context;
+        private readonly IOptions<MatchDaysLimitOptions> daysLimit;
 
-        public MatchProvider(IDbContextWrapper context)
+        public MatchProvider(IDbContextWrapper context, IOptions<MatchDaysLimitOptions> daysLimit)
         {
             this.context = context;
+            this.daysLimit = daysLimit;
         }
 
         public void SetFinalMatchResult(string matchId, string firstSetChellanger, string secondSetChellanger, string thirdSetChellanger, string firstSetDefender, string secondSetDefender, string thirdSetDefender)
@@ -49,6 +52,28 @@ namespace TenisRanking.MatchProvider
             this.context.UpdatePlayer(deffender);
             this.context.UpdatePlayer(chellanger);
             this.context.UpdateMatch(match);
+        }
+
+        public void CheckDeadlines()
+        {
+            var players = this.context.GetAllPlayers();
+
+            foreach (var player in players)
+            {
+                if (player.LastPlayedMatch < DateTime.Now.AddDays(-daysLimit.Value.Days))
+                {
+                    var level = Utils.Utils.GetLevel(player.Rank);
+
+                    var playersToMove = this.context.GetPlayersInRanks(player.Rank, player.Rank + level +1, true);
+                    player.Rank += level +1;
+                    playersToMove.ForEach(p => p.Rank--);
+
+                    this.context.UpdatePlayer(player);
+                    playersToMove.ForEach(p => this.context.UpdatePlayer(p));
+
+                }
+            }
+
         }
 
         private bool IsChellangerWinner(Match match)

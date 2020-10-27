@@ -32,18 +32,29 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Quartz" Version="3.2.0" />
+    <PackageReference Include="Quartz.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.2.0" />
     <PackageReference Include="SendGrid" Version="9.21.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
     <Folder Include="Identity\" />
+    <Folder Include="wwwroot\images\icons\" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Update="wwwroot\images\background.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Resource.en-US.resx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
