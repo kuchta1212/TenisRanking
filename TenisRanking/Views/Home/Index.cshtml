@@ -30,7 +30,7 @@
 
     <div class="container">
 
-        <div class="row">
+        <div class="row padding">
             <div class="col-lg-12">
                 @{
                     var level = -1;
@@ -73,7 +73,7 @@
 
         @if (SignInManager.IsSignedIn(User))
         {
-            <div class="row">
+            <div class="row padding">
                 <div class="col-sm opacity-table">
                     <h3>Výzvy</h3>
                     <table class="table table-striped">
@@ -103,8 +103,8 @@
                                 }
                                 else
                                 {
-                                    <tr class="bg-success">
-                                        <td>
+                                    <tr>
+                                        <td class="bg-success">
                                             <img src="images/icons/outgoing.png" />
                                         </td>
                                         <td>
@@ -173,21 +173,20 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row padding">
                 <div class="col opacity-table">
                     <h2>Odehranné</h2>
                     <table class="table table-hover">
                         <tbody>
                             @foreach (var playedMatch in Model.PlayedMatches)
                             {
-                                var isChellangerWinner = Utils.IsChellangerWinner(playedMatch.FirstSetChellanger, playedMatch.SecondSetChellanger, playedMatch.ThirdSetChellanger, playedMatch.FirstSetDefender, playedMatch.SecondSetDefender, playedMatch.ThirdSetDefender);
-                                if ((playedMatch.Chellanger == Model.Player.Id && isChellangerWinner) || (playedMatch.Defender == Model.Player.Id && !isChellangerWinner))
+                                if ((playedMatch.Chellanger == Model.Player.Id && playedMatch.IsChellangerWinner()) || (playedMatch.Defender == Model.Player.Id && !playedMatch.IsChellangerWinner()))
                                 {
-                                    @Html.Raw("<tr class=\"bg-success\">")
+                                    @Html.Raw("<tr class=\"text-success\">")
                                 }
                                 else
                                 {
-                                    @Html.Raw("<tr class=\"bg-danger\">")
+                                    @Html.Raw("<tr class=\"text-danger\">")
                                 }
                             <td>
                                 @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == playedMatch.Defender).PlayerName)
@@ -196,16 +195,16 @@
                                 @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == playedMatch.Chellanger).PlayerName)
                             </td>
                             <td>
-                                @Html.Raw(playedMatch.FirstSetDefender + ":" + playedMatch.FirstSetChellanger)
+                                @Html.Raw(Utils.GetSetInString(playedMatch.FirstSetDefender, playedMatch.FirstSetChellanger))
                             </td>
                             <td>
-                                @Html.Raw(playedMatch.SecondSetDefender + ":" + playedMatch.SecondSetChellanger)
+                                @Html.Raw(Utils.GetSetInString(playedMatch.SecondSetDefender, playedMatch.SecondSetChellanger))
                             </td>
                             <td>
-                                @Html.Raw(playedMatch.ThirdSetDefender + ":" + playedMatch.ThirdSetChellanger)
+                                @Html.Raw(Utils.GetSetInString(playedMatch.ThirdSetDefender, playedMatch.ThirdSetChellanger))
                             </td>
                             @Html.Raw("</tr>")
-                        }
+                            }
                             </tbody>
                         </table>
                     </div>
@@ -215,23 +214,40 @@
                             <tbody>
                                 @foreach (var match in Model.AllMatches)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == match.Defender).PlayerName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == match.Chellanger).PlayerName)
-                                        </td>
-                                        <td>
-                                            @Html.Raw(match.FirstSetDefender + ":" + match.FirstSetChellanger)
-                                        </td>
-                                        <td>
-                                            @Html.Raw(match.SecondSetDefender + ":" + match.SecondSetChellanger)
-                                        </td>
-                                        <td>
-                                            @Html.Raw(match.ThirdSetDefender + ":" + match.ThirdSetChellanger)
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    @if (!match.IsChellangerWinner())
+                                    {
+                                        @Html.Raw("<td class=\"text-success\">")
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<td class=\"text-danger\">")
+                                    }
+
+                                    @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == match.Defender).PlayerName)
+                                    @Html.Raw("</div>")
+
+                                    @if (!match.IsChellangerWinner())
+                                    {
+                                        @Html.Raw("<td class=\"text-danger\">")
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<td class=\"text-success\">")
+                                    }
+
+                                    @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == match.Chellanger).PlayerName)
+                                    @Html.Raw("</div>")
+                                    <td>
+                                        @Html.Raw(Utils.GetSetInString(match.FirstSetDefender, match.FirstSetChellanger))
+                                    </td>
+                                    <td>
+                                        @Html.Raw(Utils.GetSetInString(match.SecondSetDefender, match.SecondSetChellanger))
+                                    </td>
+                                    <td>
+                                        @Html.Raw(Utils.GetSetInString(match.ThirdSetDefender, match.ThirdSetChellanger))
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                         </table>

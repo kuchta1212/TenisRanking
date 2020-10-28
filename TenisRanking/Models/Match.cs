@@ -34,5 +34,18 @@ namespace TenisRanking.Models
         public DateTime DateOfGame { get; set; }
 
         public MatchStatus Status { get; set; }
+
+        public bool IsChellangerWinner()
+        {
+            if (this.FirstSetChellanger > this.FirstSetDefender || this.SecondSetChellanger > this.SecondSetDefender)
+            {
+                if ((this.ThirdSetChellanger == 0 && this.ThirdSetDefender == 0) || this.ThirdSetChellanger > this.ThirdSetDefender)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
