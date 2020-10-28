@@ -28,7 +28,7 @@
 }
 
 
-    <div class="container-fluid">
+    <div class="container">
 
         <div class="row">
             <div class="col-lg-12">
@@ -65,6 +65,7 @@
                         @Html.Raw("</div>")
                         level = playerLevel;
                     }
+                    @Html.Raw("</div>")
                 }
             </div>
         </div>
@@ -72,8 +73,8 @@
 
         @if (SignInManager.IsSignedIn(User))
         {
-            <div class="row justify-content-center">
-                <div class="col-md opacity-table">
+            <div class="row">
+                <div class="col-sm opacity-table">
                     <h3>Výzvy</h3>
                     <table class="table table-striped">
                         <tbody>
@@ -121,7 +122,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md opacity-table">
+                <div class="col-sm opacity-table">
                     <h3>Naplánované</h3>
                     <table class="table table-hover">
                         <tbody>
@@ -147,7 +148,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md opacity-table">
+                <div class="col-sm opacity-table">
                     <h2>Odmítnuté</h2>
                     <table class="table table-hover">
                         <tbody>
@@ -170,7 +171,10 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md opacity-table">
+            </div>
+
+            <div class="row">
+                <div class="col opacity-table">
                     <h2>Odehranné</h2>
                     <table class="table table-hover">
                         <tbody>
@@ -205,10 +209,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-
-            <div class="row justify-content-center">
-                    <div class="col-lg-12 opacity-table">
+                <div class="col opacity-table">
                         <h3>Všechny zápasy</h3>
                         <table class="table table-hover">
                             <tbody>
@@ -235,7 +236,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+            </div>
         }
     </div>
 <div id="add-result-modal" class="modal" role="dialog">  
