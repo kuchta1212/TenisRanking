@@ -9,11 +9,9 @@ namespace TenisRanking.Models
 {
     public class ViewMessageFactory : IViewMessageFactory
     {
-        private readonly IStringLocalizer<Resources.Resource> resources;
 
-        public ViewMessageFactory(IStringLocalizer<Resources.Resource> resources)
+        public ViewMessageFactory()
         {
-            this.resources = resources;
         }
 
         public ViewMessage Create(MessageStatus status, string messageName)
@@ -28,7 +26,7 @@ namespace TenisRanking.Models
 
         private ViewMessage CreateSucessMessage(string messageName)
         {
-            return new ViewMessage() {Status = MessageStatus.SUCCESS, Message = resources[messageName]};
+            return new ViewMessage() {Status = MessageStatus.SUCCESS, Message = Resources.Resource.Messages[messageName]};
         }
 
         private ViewMessage CreateDefaultMessage()
