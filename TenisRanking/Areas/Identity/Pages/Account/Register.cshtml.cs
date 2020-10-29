@@ -86,26 +86,16 @@ namespace TenisRanking.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-
-
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Page(
-                    //    "/Account/ConfirmEmail",
-                    //    pageHandler: null,
-                    //    values: new { userId = user.Id, code = code },
-                    //    protocol: Request.Scheme);
+                    var callbackUrl = Url.Page(
+                        "/Account/ConfirmEmail",
+                        pageHandler: null,
+                        values: new { userId = user.Id, code = code },
+                        protocol: Request.Scheme);
 
-                    //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await _emailSender.SendRegisterConfirmationEmail(Input.Email, Input.Name, "Confirm your email",
+                        $"Prosím potvrďt svůj email. <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Klikni zde.</a>.");
 
-                    //TEMPORARY -> TODO REMOVE AUTO EMAIL CONFIRM
-                    var emailConfirm = await _userManager.ConfirmEmailAsync(user, code);
-                    if (!emailConfirm.Succeeded)
-                    {
-                        throw new InvalidOperationException($"Error confirming email for user with ID '{user.Id}':");
-                    }
-
-                    await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)
