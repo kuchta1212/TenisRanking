@@ -10,3 +10,4 @@ obj
 /TenisRanking/TenisRanking.csproj.user
 /TenisRanking/bin/Release/netcoreapp2.1
 /TenisRanking/Properties/PublishProfiles
+/TenisRanking/appsettings.Development.json
