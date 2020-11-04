@@ -19,38 +19,21 @@ namespace TenisRanking.MatchProvider
             this.daysLimit = daysLimit;
         }
 
-        public void SetFinalMatchResult(string matchId, string firstSetChellanger, string secondSetChellanger, string thirdSetChellanger, string firstSetDefender, string secondSetDefender, string thirdSetDefender)
+        public void SetFinalMatchResult(MatchViewModel matchViewModel, string userId)
         {
-            var match = this.context.GetMatch(matchId);
-
-            match.FirstSetDefender = int.Parse(firstSetDefender);
-            match.SecondSetDefender = int.Parse(secondSetDefender);
-
-            match.FirstSetChellanger = int.Parse(firstSetChellanger);
-            match.SecondSetChellanger = int.Parse(secondSetChellanger);
-
-            if (!string.IsNullOrEmpty(thirdSetDefender) && !string.IsNullOrEmpty(thirdSetChellanger))
-            {
-                match.ThirdSetDefender = int.Parse(thirdSetDefender);
-                match.ThirdSetChellanger = int.Parse(thirdSetChellanger);
-            }
-
+            var match = this.context.GetMatch(matchViewModel.MatchId);
             match.DateOfGame = DateTime.Today;
-            match.Status = MatchStatus.Played;
+            match.Status = MatchStatus.WaitingForConfirmation;
 
-            var deffender = this.context.GetPlayer(match.Defender);
-            deffender.LastPlayedMatch = DateTime.Today;
-
-            var chellanger = this.context.GetPlayer(match.Chellanger);
-            chellanger.LastPlayedMatch = DateTime.Today;
-
-            if (this.IsChellangerWinner(match))
+            match.Result = new MatchResult()
             {
-                this.AdjustRank(chellanger, deffender);
-            }
+                CreatedBy = userId,
+                Type = matchViewModel.Type,
+                Sets = this.GetSets(matchViewModel)
+            };
 
-            this.context.UpdatePlayer(deffender);
-            this.context.UpdatePlayer(chellanger);
+            match.Result.Winner = this.IsChellangerWinner(match) ? match.Chellanger : match.Defender;
+            
             this.context.UpdateMatch(match);
         }
 
@@ -76,23 +59,88 @@ namespace TenisRanking.MatchProvider
 
         }
 
+        public void ConfirmResult(string matchId)
+        {
+            var match = this.context.GetMatch(matchId);
+            var chellanger = this.context.GetPlayer(match.Chellanger);
+            var deffender = this.context.GetPlayer(match.Defender);
+           
+            deffender.LastPlayedMatch = DateTime.Today;
+            chellanger.LastPlayedMatch = DateTime.Today;
+
+            this.context.UpdatePlayer(deffender);
+            this.context.UpdatePlayer(chellanger);
+            match.Status = MatchStatus.Played;
+
+            if (this.IsChellangerWinner(match))
+            {
+                this.AdjustRank(chellanger, deffender);
+            }
+
+            this.context.UpdatePlayer(deffender);
+            this.context.UpdatePlayer(chellanger);
+            this.context.UpdateMatch(match);
+        }
+
         private bool IsChellangerWinner(Match match)
         {
-            if (this.DoesChallangerWonThisSet(match.FirstSetDefender, match.FirstSetChellanger) || this.DoesChallangerWonThisSet(match.FirstSetDefender, match.FirstSetChellanger))
+            return match.Result.Type == MatchResultType.OneSet
+                ? this.DidChallangerWinThisSet(match.Result.Sets.First())
+                : this.DidChallangerWinThisSet(match.Result.Sets[0]) &&
+                  this.DidChallangerWinThisSet(match.Result.Sets[1]);
+        }
+
+        private bool DidChallangerWinThisSet(MatchSet set)
+        {
+            if (set.Challanger > set.Deffender)
             {
-                if ((match.ThirdSetDefender == 0 && match.ThirdSetChellanger == 0) || this.DoesChallangerWonThisSet(match.ThirdSetDefender, match.ThirdSetChellanger))
-                {
-                    return true;
-                }
+                return true;
+            }
+
+            if (set.Challanger == set.Deffender)
+            {
+                return set.ChallengerTieBreak > set.DeffenderTieBreak;
             }
 
             return false;
         }
 
-        private bool DoesChallangerWonThisSet(int deffender, int challenger)
+        private List<MatchSet> GetSets(MatchViewModel matchViewModel)
         {
-            return challenger > deffender && (challenger == 6 || challenger == 7);
+            var sets = new List<MatchSet>
+            {
+                this.GetSet(matchViewModel.FirstSetChellanger, matchViewModel.FirstSetTieBreakChallanger, matchViewModel.FirstSetDefender, matchViewModel.FirstSetTieBreakDeffender)
+            };
+
+            if (matchViewModel.Type == MatchResultType.TwoSets)
+            {
+                sets.Add(this.GetSet(matchViewModel.SecondSetChellanger, matchViewModel.SecondSetTieBreakChallanger, matchViewModel.SecondSetDefender, matchViewModel.SecondSetTieBreakDeffender));
+            }
+
+            return sets;
         }
+
+        private MatchSet GetSet(int challanger, int challengerTieBreak, int deffender, int deffenderTieBreak)
+        {
+            return new MatchSet()
+            {
+                Challanger = challanger,
+                Deffender = deffender,
+                ChallengerTieBreak = this.WasTieBreakPlayed(challengerTieBreak, deffenderTieBreak)
+                    ? challengerTieBreak
+                    : 0,
+                DeffenderTieBreak = this.WasTieBreakPlayed(challengerTieBreak, deffenderTieBreak)
+                    ? deffenderTieBreak
+                    : 0,
+            };
+        }
+
+        private bool WasTieBreakPlayed(int challenger, int deffender)
+        {
+            return !(challenger == 0 &&  deffender == 0);
+        }
+
+
 
         private void AdjustRank(Player challenger, Player deffender)
         {

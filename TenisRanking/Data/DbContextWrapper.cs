@@ -62,7 +62,14 @@ namespace TenisRanking.Data
         public List<Match> GetAllChellangedMatchesForPlayer(string playerId)
         {
             return this.dbContext.Matches
-                .Where(m => (m.Defender == playerId || m.Chellanger == playerId) && m.Status == MatchStatus.Chellanged)
+                .Where(m => (m.Defender == playerId || m.Chellanger == playerId) && m.Status == MatchStatus.Challanged)
+                .ToList();
+        }
+
+        public List<Match> GetAllWaitingForConfirmationMatchesForPlayer(string playerId)
+        {
+            return this.dbContext.Matches
+                .Where(m => (m.Defender == playerId || m.Chellanger == playerId) && m.Status == MatchStatus.WaitingForConfirmation)
                 .ToList();
         }
 
@@ -109,6 +116,13 @@ namespace TenisRanking.Data
         public void UpdatePlayer(Player player)
         {
             this.dbContext.Update(player);
+            this.dbContext.SaveChanges();
+        }
+
+        public void ConfirmResult(string matchId)
+        {
+            var match = this.GetMatch(matchId);
+            match.Status = MatchStatus.Played;
             this.dbContext.SaveChanges();
         }
     }

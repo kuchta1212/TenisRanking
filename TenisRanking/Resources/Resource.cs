@@ -15,6 +15,7 @@ namespace TenisRanking.Resources
             { "ChallengeSended", "Výzva odeslána"},
             { "ResultAdded", "Výsledek přidán"},
             { "MatchRemoved", "Zápas smazán"},
+            { "ResultConfirmed", "Výsledek byl potvrzen"}
         };
     }
 }

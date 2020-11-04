@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite.Internal.IISUrlRewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
@@ -54,6 +55,9 @@ namespace TenisRanking.Controllers
                 ChallengedMatches = this.User.Identity.IsAuthenticated
                     ? this.context.GetAllChellangedMatchesForPlayer(userId)
                     : new List<Match>(),
+                WaitingForConfirmationMatches = this.User.Identity.IsAuthenticated
+                    ? this.context.GetAllWaitingForConfirmationMatchesForPlayer(userId)
+                    : new List<Match>(),
                 RefusedMatches = this.User.Identity.IsAuthenticated
                     ? this.context.GetAllRefusedMatches(userId)
                     : new List<Match>(),
@@ -72,7 +76,7 @@ namespace TenisRanking.Controllers
                 {
                     Chellanger = this.User.FindFirstValue(ClaimTypes.NameIdentifier),
                     Defender = deffenderId,
-                    Status = MatchStatus.Chellanged
+                    Status = MatchStatus.Challanged
                 };
 
                 this.context.SaveMatch(match);
@@ -164,17 +168,49 @@ namespace TenisRanking.Controllers
                 Deffender = deffender.PlayerName
             };
 
+            if (match.Status == MatchStatus.WaitingForConfirmation)
+            {
+                viewModel.FirstSetDefender = match.Result.Sets.First().Deffender;
+                viewModel.FirstSetTieBreakDeffender = match.Result.Sets.First().DeffenderTieBreak;
+
+                viewModel.FirstSetChellanger = match.Result.Sets.First().Challanger;
+                viewModel.FirstSetTieBreakChallanger = match.Result.Sets.First().ChallengerTieBreak;
+
+                if (match.Result.Type == MatchResultType.TwoSets)
+                {
+                    viewModel.FirstSetDefender = match.Result.Sets[1].Deffender;
+                    viewModel.FirstSetTieBreakDeffender = match.Result.Sets[1].DeffenderTieBreak;
+
+                    viewModel.FirstSetChellanger = match.Result.Sets[1].Challanger;
+                    viewModel.FirstSetTieBreakChallanger = match.Result.Sets[1].ChallengerTieBreak;
+                }
+            }
+
             return PartialView("AddMatchResultPartial", viewModel);
         }
 
         [HttpPost]
-        public IActionResult AddMatchResult(string MatchId, string FirstSetChellanger, string SecondSetChellanger, string ThirdSetChellanger, string FirstSetDefender, string SecondSetDefender, string ThirdSetDefender)
+        public IActionResult AddMatchResult(MatchViewModel matchViewModel)
         {
             try
             {
-                this.matchProvider.SetFinalMatchResult(MatchId, FirstSetChellanger, SecondSetChellanger, ThirdSetChellanger, FirstSetDefender, SecondSetDefender, ThirdSetDefender);
+                this.matchProvider.SetFinalMatchResult(matchViewModel, this.User.FindFirstValue(ClaimTypes.NameIdentifier));
 
                 return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ResultAdded });
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Index", new { status = MessageStatus.ERROR.ToString(), message = e.ToString() });
+            }
+        }
+
+        public IActionResult ConfirmResult(string matchId)
+        {
+            try
+            {
+                this.matchProvider.ConfirmResult(matchId);
+
+                return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ResultConfirmed });
             }
             catch (Exception e)
             {

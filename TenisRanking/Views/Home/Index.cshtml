@@ -152,22 +152,54 @@
                     <h2>Odmítnuté</h2>
                     <table class="table table-hover">
                         <tbody>
-                            @foreach (var refusedMatch in Model.RefusedMatches)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == refusedMatch.Defender).PlayerName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == refusedMatch.Chellanger).PlayerName)
-                                    </td>
-                                    <td>
-                                        <form method="Post">
-                                            <button class="btn btn-light" asp-controller="Home" asp-action="DeleteMatch" asp-route-matchId="@refusedMatch.Id">Smazat</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            }
+                        @foreach (var refusedMatch in Model.RefusedMatches)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == refusedMatch.Defender).PlayerName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == refusedMatch.Chellanger).PlayerName)
+                                </td>
+                                <td>
+                                    <form method="Post">
+                                        <button class="btn btn-light" asp-controller="Home" asp-action="DeleteMatch" asp-route-matchId="@refusedMatch.Id">Smazat</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="Post">
+                                        <button class="btn btn-light" asp-controller="Home" asp-action="Challenge" asp-route-deffenderId="@refusedMatch.Defender">Opakovat výzvu</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm opacity-table">
+                    <h2>Čekající na potvrzení</h2>
+                    <table class="table table-hover">
+                        <tbody>
+                        @foreach (var waitingForConfirmation in Model.WaitingForConfirmationMatches)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == waitingForConfirmation.Defender).PlayerName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == waitingForConfirmation.Chellanger).PlayerName)
+                                </td>
+                                <td>
+                                    @Html.Raw(waitingForConfirmation.Result.ToString())
+                                </td>
+                                @(waitingForConfirmation.Result.CreatedBy != Model.Player.Id
+                                      ? Html.Raw("<td><form method=\"Post\"><button class=\"btn btn-light\" asp-controller=\"Home\" asp-action=\"ConfirmResult\" asp-route-matchId="+waitingForConfirmation.Id+">Potvrdit výsledek</button></form></td>")
+                                    : Html.Raw("<td></td>"))
+                                <td>
+                                    <button id="AddMatchResult" class="btn btn-secondary modal-link" data-toggle="modal" data-target="#add-result-modal" data-url=@($"Home/InitMatchResult?matchId={waitingForConfirmation.Id}")>Opravit výsledek</button>
+                                </td>
+                            </tr>
+                        }
                         </tbody>
                     </table>
                 </div>
@@ -180,7 +212,7 @@
                         <tbody>
                             @foreach (var playedMatch in Model.PlayedMatches)
                             {
-                                if ((playedMatch.Chellanger == Model.Player.Id && playedMatch.IsChellangerWinner()) || (playedMatch.Defender == Model.Player.Id && !playedMatch.IsChellangerWinner()))
+                                if (playedMatch.Chellanger == Model.Player.Id && playedMatch.IsChallangerWinner() || playedMatch.Defender == Model.Player.Id && !playedMatch.IsChallangerWinner())
                                 {
                                     @Html.Raw("<tr class=\"text-success\">")
                                 }
@@ -195,13 +227,7 @@
                                 @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == playedMatch.Chellanger).PlayerName)
                             </td>
                             <td>
-                                @Html.Raw(Utils.GetSetInString(playedMatch.FirstSetDefender, playedMatch.FirstSetChellanger))
-                            </td>
-                            <td>
-                                @Html.Raw(Utils.GetSetInString(playedMatch.SecondSetDefender, playedMatch.SecondSetChellanger))
-                            </td>
-                            <td>
-                                @Html.Raw(Utils.GetSetInString(playedMatch.ThirdSetDefender, playedMatch.ThirdSetChellanger))
+                                @Html.Raw(playedMatch.Result.ToString())
                             </td>
                             @Html.Raw("</tr>")
                             }
@@ -215,38 +241,18 @@
                                 @foreach (var match in Model.AllMatches)
                                 {
                                 <tr>
-                                    @if (!match.IsChellangerWinner())
-                                    {
-                                        @Html.Raw("<td class=\"text-success\">")
-                                    }
-                                    else
-                                    {
-                                        @Html.Raw("<td class=\"text-danger\">")
-                                    }
+                                    @(!match.IsChallangerWinner() ? Html.Raw("<td class=\"text-success\">") : Html.Raw("<td class=\"text-danger\">"))
 
                                     @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == match.Defender).PlayerName)
                                     @Html.Raw("</div>")
 
-                                    @if (!match.IsChellangerWinner())
-                                    {
-                                        @Html.Raw("<td class=\"text-danger\">")
-                                    }
-                                    else
-                                    {
-                                        @Html.Raw("<td class=\"text-success\">")
-                                    }
+                                    @(!match.IsChallangerWinner() ? Html.Raw("<td class=\"text-danger\">") : Html.Raw("<td class=\"text-success\">"))
 
                                     @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == match.Chellanger).PlayerName)
                                     @Html.Raw("</div>")
                                     <td>
-                                        @Html.Raw(Utils.GetSetInString(match.FirstSetDefender, match.FirstSetChellanger))
-                                    </td>
-                                    <td>
-                                        @Html.Raw(Utils.GetSetInString(match.SecondSetDefender, match.SecondSetChellanger))
-                                    </td>
-                                    <td>
-                                        @Html.Raw(Utils.GetSetInString(match.ThirdSetDefender, match.ThirdSetChellanger))
-                                    </td>
+                                        @Html.Raw(match.Result.ToString())
+                                    </td>                                    
                                 </tr>
                                 }
                             </tbody>

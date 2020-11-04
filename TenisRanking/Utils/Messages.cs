@@ -16,5 +16,7 @@ namespace TenisRanking.Models
         public static string MatchRemoved = nameof(MatchRemoved);
 
         public static string ResultAdded = nameof(ResultAdded);
+
+        public static string ResultConfirmed = nameof(ResultConfirmed);
     }
 }

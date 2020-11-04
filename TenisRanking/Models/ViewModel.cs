@@ -19,6 +19,8 @@ namespace TenisRanking.Models
 
         public List<Match> ChallengedMatches { get; set; }
 
+        public List<Match> WaitingForConfirmationMatches { get; set; }
+
         public List<Match> AllMatches { get; set; }
 
         public ViewMessage ViewMessage { get; set; }

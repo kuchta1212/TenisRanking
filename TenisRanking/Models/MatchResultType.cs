@@ -5,16 +5,10 @@ using System.Threading.Tasks;
 
 namespace TenisRanking.Models
 {
-    public enum MatchStatus
+    public enum MatchResultType
     {
-        Challanged,
+        OneSet,
 
-        Accepted,
-
-        WaitingForConfirmation,
-
-        Played,
-
-        Refused
+        TwoSets
     }
 }

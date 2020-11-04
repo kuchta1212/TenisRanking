@@ -26,6 +26,8 @@ namespace TenisRanking.Data
 
         List<Match> GetAllRefusedMatches(string playerId);
 
+        List<Match> GetAllWaitingForConfirmationMatchesForPlayer(string playerId);
+
         void SaveMatch(Match match);
 
         void UpdateMatch(Match match);
@@ -35,6 +37,9 @@ namespace TenisRanking.Data
         void DeleteMatch(string matchId);
 
         List<Player> GetPlayersInRanks(int starterRank, int endRank, bool includeEdges = false);
+
         void UpdatePlayer(Player player);
+
+        void ConfirmResult(string matchId);
     }
 }

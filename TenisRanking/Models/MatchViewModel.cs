@@ -13,16 +13,22 @@ namespace TenisRanking.Models
 
         public string Deffender { get; set; }
 
+        public MatchResultType Type { get; set; }
+
         public int FirstSetDefender { get; set; }
+
+        public int FirstSetTieBreakDeffender { get; set; }
 
         public int SecondSetDefender { get; set; }
 
-        public int ThirdSetDefender { get; set; }
+        public int SecondSetTieBreakDeffender { get; set; }
 
         public int FirstSetChellanger { get; set; }
 
+        public int FirstSetTieBreakChallanger { get; set; }
+
         public int SecondSetChellanger { get; set; }
 
-        public int ThirdSetChellanger { get; set; }
+        public int SecondSetTieBreakChallanger { get; set; }
     }
 }

@@ -11,37 +11,48 @@
             </div>
             <form id="AddMatchResultDialogForm" method="post", asp-controller="Home" asp-action="AddMatchResult">
                 <div class="modal-body">
+                    <div class="form-row">
+                        <label asp-for="Type" class="control-label">Počet vítězných setů</label>
+                        <select asp-for="Type" class="form-control">
+                            <option value="@MatchResultType.OneSet">Jeden</option>
+                            <option value="@MatchResultType.TwoSets">Dva</option>
+                        </select>
+                    </div>
+                    <br />
+                    <br />
+                    <h4>1. set</h4>
                     <div class="form-row justify-content-center">
-                        <h6>1. set</h6>
                         <div class="col">
-                            <input asp-for="FirstSetChellanger" class="form-control" min="0" max="7"/>
+                            <input asp-for="FirstSetChellanger" class="form-control" min="0" max="7" />
                         </div>
                         <div class="col">
-                            <input asp-for="FirstSetDefender" class="form-control" min="0" max="7"/>
+                            <input asp-for="FirstSetDefender" class="form-control" min="0" max="7" />
+                        </div>
+                        <div class="col">
+                            <input asp-for="FirstSetTieBreakChallanger" class="form-control" min="0" max="99" />
+                        </div>
+                        <div class="col">
+                            <input asp-for="FirstSetTieBreakDeffender" class="form-control" min="0" max="99" />
                         </div>
                     </div>
-                    <br/>
+                    <br />
+                    <h6>2. set</h6>
                     <div class="form-row justify-content-center">
-                        <h6>2. set</h6>
                         <div class="col">
-                            <input asp-for="SecondSetChellanger" class="form-control" min="0" max="7"/>
+                            <input asp-for="SecondSetChellanger" class="form-control" min="0" max="7" />
                         </div>
                         <div class="col">
-                            <input asp-for="SecondSetDefender" class="form-control" min="0" max="7"/>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="form-row justify-content-center">
-                        <h6>3. set</h6>
-                        <div class="col">
-                            <input asp-for="ThirdSetChellanger" class="form-control"/>
+                            <input asp-for="SecondSetDefender" class="form-control" min="0" max="7" />
                         </div>
                         <div class="col">
-                            <input asp-for="ThirdSetDefender" class="form-control"/>
+                            <input asp-for="SecondSetTieBreakChallanger" class="form-control" min="0" max="99" />
+                        </div>
+                        <div class="col">
+                            <input asp-for="SecondSetTieBreakDeffender" class="form-control" min="0" max="99" />
                         </div>
                     </div>
                     <div>
-                        <input asp-for="MatchId" value="@Model.MatchId" hidden/>
+                        <input asp-for="MatchId" value="@Model.MatchId" hidden />
                     </div>
                 </div>
                 <div class="modal-footer">

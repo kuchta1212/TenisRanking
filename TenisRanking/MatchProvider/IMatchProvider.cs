@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TenisRanking.Models;
 
 namespace TenisRanking.MatchProvider
 {
     public interface IMatchProvider
     {
-        void SetFinalMatchResult(string matchId, string firstSetChellanger, string secondSetChellanger, string thirdSetChellanger, string firstSetDefender, string secondSetDefender, string thirdSetDefender);
+        void SetFinalMatchResult(MatchViewModel matchViewModel, string userId);
 
         void CheckDeadlines();
+
+        void ConfirmResult(string matchId);
     }
 }
