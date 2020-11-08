@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using TenisRanking.Models;
 
@@ -36,18 +37,12 @@ namespace TenisRanking.Data
 
         public List<Match> GetAllMatches()
         {
-            return this.dbContext.Matches.Where(x => x.Status == MatchStatus.Played).ToList();
-        }
-
-        public List<Match> GetAllMatchesForPlayer(Player player)
-        {
-            return this.dbContext.Matches.Where(m => m.Defender == player.Id || m.Chellanger == player.Id)
-                .ToList();
+            return this.dbContext.Matches.Include("Result").Where(x => x.Status == MatchStatus.Played).ToList();
         }
 
         public List<Match> GetAllPlayedMatchesForPlayer(string playerId)
         {
-            return this.dbContext.Matches
+            return this.dbContext.Matches.Include("Result")
                 .Where(m => (m.Defender == playerId || m.Chellanger == playerId) && m.Status == MatchStatus.Played)
                 .ToList();
         }
@@ -68,7 +63,7 @@ namespace TenisRanking.Data
 
         public List<Match> GetAllWaitingForConfirmationMatchesForPlayer(string playerId)
         {
-            return this.dbContext.Matches
+            return this.dbContext.Matches.Include("Result")
                 .Where(m => (m.Defender == playerId || m.Chellanger == playerId) && m.Status == MatchStatus.WaitingForConfirmation)
                 .ToList();
         }

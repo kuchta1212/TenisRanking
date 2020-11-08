@@ -21,33 +21,49 @@
                     <br />
                     <br />
                     <h4>1. set</h4>
-                    <div class="form-row justify-content-center">
+                    <div id="firstSetResults" class="form-row justify-content-center">
                         <div class="col">
+                            <label asp-for="FirstSetChellanger">@Model.Challanger</label>
                             <input asp-for="FirstSetChellanger" class="form-control" min="0" max="7" />
                         </div>
                         <div class="col">
+                            <label asp-for="FirstSetDefender">@Model.Deffender</label>
                             <input asp-for="FirstSetDefender" class="form-control" min="0" max="7" />
                         </div>
+                    </div>
+                    <br />
+                    <h6>TieBreak</h6>
+                    <div if="firstSetTieBreaks" class="form-row justify-content-center">
                         <div class="col">
+                            <label asp-for="FirstSetTieBreakChallanger">@Model.Challanger</label>
                             <input asp-for="FirstSetTieBreakChallanger" class="form-control" min="0" max="99" />
                         </div>
                         <div class="col">
+                            <label asp-for="FirstSetTieBreakDeffender">@Model.Deffender</label>
                             <input asp-for="FirstSetTieBreakDeffender" class="form-control" min="0" max="99" />
                         </div>
                     </div>
                     <br />
-                    <h6>2. set</h6>
+                    <h4>2. set</h4>
                     <div class="form-row justify-content-center">
                         <div class="col">
+                            <label asp-for="SecondSetChellanger">@Model.Challanger</label>
                             <input asp-for="SecondSetChellanger" class="form-control" min="0" max="7" />
                         </div>
                         <div class="col">
+                            <label asp-for="SecondSetDefender">@Model.Deffender</label>
                             <input asp-for="SecondSetDefender" class="form-control" min="0" max="7" />
                         </div>
+                    </div>
+                    <br />
+                    <h6>TieBreak</h6>
+                    <div if="firstSetTieBreaks" class="form-row justify-content-center">
                         <div class="col">
+                            <label asp-for="SecondSetTieBreakChallanger">@Model.Challanger</label>
                             <input asp-for="SecondSetTieBreakChallanger" class="form-control" min="0" max="99" />
                         </div>
                         <div class="col">
+                            <label asp-for="SecondSetTieBreakDeffender">@Model.Deffender</label>
                             <input asp-for="SecondSetTieBreakDeffender" class="form-control" min="0" max="99" />
                         </div>
                     </div>

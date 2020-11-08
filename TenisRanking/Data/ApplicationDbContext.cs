@@ -13,6 +13,10 @@ namespace TenisRanking.Data
 
         public DbSet<Player> Players { get; set; }
 
+        public DbSet<MatchResult> Results { get; set; }
+
+        public DbSet<MatchSet> Sets { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
