@@ -37,12 +37,12 @@ namespace TenisRanking.Data
 
         public List<Match> GetAllMatches()
         {
-            return this.dbContext.Matches.Include("Result").Where(x => x.Status == MatchStatus.Played).ToList();
+            return this.dbContext.Matches.Include(m => m.Result).Include(m => m.Result.Sets).Where(x => x.Status == MatchStatus.Played).ToList();
         }
 
         public List<Match> GetAllPlayedMatchesForPlayer(string playerId)
         {
-            return this.dbContext.Matches.Include("Result")
+            return this.dbContext.Matches.Include(m => m.Result).Include(m => m.Result.Sets)
                 .Where(m => (m.Defender == playerId || m.Chellanger == playerId) && m.Status == MatchStatus.Played)
                 .ToList();
         }
@@ -63,7 +63,7 @@ namespace TenisRanking.Data
 
         public List<Match> GetAllWaitingForConfirmationMatchesForPlayer(string playerId)
         {
-            return this.dbContext.Matches.Include("Result")
+            return this.dbContext.Matches.Include(m => m.Result).Include(m => m.Result.Sets)
                 .Where(m => (m.Defender == playerId || m.Chellanger == playerId) && m.Status == MatchStatus.WaitingForConfirmation)
                 .ToList();
         }
@@ -91,7 +91,8 @@ namespace TenisRanking.Data
 
         public Match GetMatch(string matchId)
         {
-            return this.dbContext.Matches.FirstOrDefault(x => x.Id == matchId);
+            return this.dbContext.Matches.Include(m => m.Result).Include(m => m.Result.Sets)
+                .FirstOrDefault(x => x.Id == matchId);
         }
 
         public void DeleteMatch(string matchId)

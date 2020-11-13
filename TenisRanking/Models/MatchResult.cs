@@ -24,14 +24,8 @@ namespace TenisRanking.Models
 
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            foreach (var set in this.Sets)
-            {
-                sb.Append(set);
-                sb.Append(", ");
-            }
+            return string.Join(", ", this.Sets);
 
-            return sb.ToString();
         }
     }
 }

@@ -25,12 +25,20 @@ namespace TenisRanking.MatchProvider
             match.DateOfGame = DateTime.Today;
             match.Status = MatchStatus.WaitingForConfirmation;
 
-            match.Result = new MatchResult()
+            if (match.Result != null)
             {
-                CreatedBy = userId,
-                Type = matchViewModel.Type,
-                Sets = this.GetSets(matchViewModel)
-            };
+                match.Result.CreatedBy = userId;
+                this.UpdateSets(matchViewModel, match.Result);
+            }
+            else
+            {
+                match.Result = new MatchResult()
+                {
+                    CreatedBy = userId,
+                    Type = matchViewModel.Type,
+                    Sets = this.GetSets(matchViewModel)
+                };
+            }
 
             match.Result.Winner = this.IsChellangerWinner(match) ? match.Chellanger : match.Defender;
             
@@ -120,6 +128,27 @@ namespace TenisRanking.MatchProvider
             return sets;
         }
 
+        private void UpdateSets(MatchViewModel viewModel, MatchResult result)
+        {
+            this.UpdateSet(viewModel.FirstSetChellanger, viewModel.FirstSetTieBreakChallanger, viewModel.FirstSetDefender, viewModel.FirstSetTieBreakDeffender, result.Sets.First());
+        }
+
+        private void UpdateSet(int challanger, int challengerTieBreak, int deffender, int deffenderTieBreak, MatchSet set)
+        {
+            set.Challanger = challanger;
+            set.Deffender = deffender;
+            if (this.WasTieBreakPlayed(challengerTieBreak, deffenderTieBreak))
+            {
+                set.ChallengerTieBreak = challengerTieBreak;
+                set.DeffenderTieBreak = deffenderTieBreak;
+            }
+            else
+            {
+                set.ChallengerTieBreak = 0;
+                set.DeffenderTieBreak = 0;
+            }
+        }
+
         private MatchSet GetSet(int challanger, int challengerTieBreak, int deffender, int deffenderTieBreak)
         {
             return new MatchSet()
@@ -139,8 +168,6 @@ namespace TenisRanking.MatchProvider
         {
             return !(challenger == 0 &&  deffender == 0);
         }
-
-
 
         private void AdjustRank(Player challenger, Player deffender)
         {

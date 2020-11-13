@@ -16,8 +16,6 @@ namespace TenisRanking.Data
 
         List<Match> GetAllMatches();
 
-        List<Match> GetAllMatchesForPlayer(Player player);
-
         List<Match> GetAllPlayedMatchesForPlayer(string playerId);
 
         List<Match> GetAllPlannedMatchesForPlayer(string playerId);

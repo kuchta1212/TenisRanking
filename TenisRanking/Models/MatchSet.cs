@@ -25,10 +25,10 @@ namespace TenisRanking.Models
         {
             if (this.ChallengerTieBreak == 0 && this.DeffenderTieBreak == 0)
             {
-                return this.Challanger + ":" + this.Deffender;
+                return this.Challanger + " : " + this.Deffender;
             }
 
-            return this.Challanger + ":" + this.Deffender + " (" + this.ChallengerTieBreak + ":" + this.DeffenderTieBreak + ")";
+            return this.Challanger + " : " + this.Deffender + " (" + this.ChallengerTieBreak + " : " + this.DeffenderTieBreak + ")";
         }
     }
 }

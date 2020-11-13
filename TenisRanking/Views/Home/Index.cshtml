@@ -192,9 +192,14 @@
                                 <td>
                                     @Html.Raw(waitingForConfirmation.Result.ToString())
                                 </td>
-                                @(waitingForConfirmation.Result.CreatedBy != Model.Player.Id
-                                      ? Html.Raw("<td><form method=\"Post\"><button class=\"btn btn-light\" asp-controller=\"Home\" asp-action=\"ConfirmResult\" asp-route-matchId="+waitingForConfirmation.Id+">Potvrdit výsledek</button></form></td>")
-                                    : Html.Raw("<td></td>"))
+                                @if (waitingForConfirmation.Result.CreatedBy != Model.Player.Id)
+                                {
+                                    <td><form method="Post"><button class="btn btn-light" asp-controller="Home" asp-action="ConfirmResult" asp-route-matchId=@waitingForConfirmation.Id>Potvrdit výsledek</button></form></td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
                                 <td>
                                     <button id="AddMatchResult" class="btn btn-secondary modal-link" data-toggle="modal" data-target="#add-result-modal" data-url=@($"Home/InitMatchResult?matchId={waitingForConfirmation.Id}")>Opravit výsledek</button>
                                 </td>
