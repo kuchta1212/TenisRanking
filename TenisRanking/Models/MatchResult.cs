@@ -24,7 +24,7 @@ namespace TenisRanking.Models
 
         public override string ToString()
         {
-            return string.Join(", ", this.Sets);
+            return string.Join(", ", this.Sets.OrderBy(s => s.Order));
 
         }
     }

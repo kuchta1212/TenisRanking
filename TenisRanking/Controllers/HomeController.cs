@@ -165,24 +165,26 @@ namespace TenisRanking.Controllers
             {
                 MatchId = matchId,
                 Challanger = challanger.PlayerName,
-                Deffender = deffender.PlayerName
+                Deffender = deffender.PlayerName,
+                Type = match.Result?.Type ?? MatchResultType.OneSet
             };
-
+            
             if (match.Status == MatchStatus.WaitingForConfirmation)
             {
-                viewModel.FirstSetDefender = match.Result.Sets.First().Deffender;
-                viewModel.FirstSetTieBreakDeffender = match.Result.Sets.First().DeffenderTieBreak;
+                var sortedSets = match.Result.Sets.OrderBy(s => s.Order);
+                viewModel.FirstSetDefender = sortedSets.First().Deffender;
+                viewModel.FirstSetTieBreakDeffender = sortedSets.First().DeffenderTieBreak;
 
-                viewModel.FirstSetChellanger = match.Result.Sets.First().Challanger;
-                viewModel.FirstSetTieBreakChallanger = match.Result.Sets.First().ChallengerTieBreak;
+                viewModel.FirstSetChellanger = sortedSets.First().Challanger;
+                viewModel.FirstSetTieBreakChallanger = sortedSets.First().ChallengerTieBreak;
 
                 if (match.Result.Type == MatchResultType.TwoSets)
                 {
-                    viewModel.FirstSetDefender = match.Result.Sets[1].Deffender;
-                    viewModel.FirstSetTieBreakDeffender = match.Result.Sets[1].DeffenderTieBreak;
+                    viewModel.SecondSetDefender = sortedSets.ElementAt(1).Deffender;
+                    viewModel.SecondSetTieBreakDeffender = sortedSets.ElementAt(1).DeffenderTieBreak;
 
-                    viewModel.FirstSetChellanger = match.Result.Sets[1].Challanger;
-                    viewModel.FirstSetTieBreakChallanger = match.Result.Sets[1].ChallengerTieBreak;
+                    viewModel.SecondSetChellanger = sortedSets.ElementAt(1).Challanger;
+                    viewModel.SecondSetTieBreakChallanger = sortedSets.ElementAt(1).ChallengerTieBreak;
                 }
             }
 

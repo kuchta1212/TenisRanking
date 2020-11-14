@@ -94,20 +94,20 @@ namespace TenisRanking.MatchProvider
         {
             return match.Result.Type == MatchResultType.OneSet
                 ? this.DidChallangerWinThisSet(match.Result.Sets.First())
-                : this.DidChallangerWinThisSet(match.Result.Sets[0]) &&
-                  this.DidChallangerWinThisSet(match.Result.Sets[1]);
+                : this.DidChallangerWinThisSet(match.Result.Sets.OrderBy(s => s.Order).First()) &&
+                  this.DidChallangerWinThisSet(match.Result.Sets.OrderBy(s => s.Order).ElementAt(1));
         }
 
         private bool DidChallangerWinThisSet(MatchSet set)
         {
-            if (set.Challanger > set.Deffender)
+            if (set.Challanger > set.Deffender && (set.ChallengerTieBreak == 0 && set.DeffenderTieBreak == 0))
             {
                 return true;
             }
 
-            if (set.Challanger == set.Deffender)
+            if (set.Challanger > set.Deffender && set.ChallengerTieBreak > set.DeffenderTieBreak)
             {
-                return set.ChallengerTieBreak > set.DeffenderTieBreak;
+                return true;
             }
 
             return false;
@@ -117,12 +117,12 @@ namespace TenisRanking.MatchProvider
         {
             var sets = new List<MatchSet>
             {
-                this.GetSet(matchViewModel.FirstSetChellanger, matchViewModel.FirstSetTieBreakChallanger, matchViewModel.FirstSetDefender, matchViewModel.FirstSetTieBreakDeffender)
+                this.GetSet(matchViewModel.FirstSetChellanger, matchViewModel.FirstSetTieBreakChallanger, matchViewModel.FirstSetDefender, matchViewModel.FirstSetTieBreakDeffender, 1)
             };
 
             if (matchViewModel.Type == MatchResultType.TwoSets)
             {
-                sets.Add(this.GetSet(matchViewModel.SecondSetChellanger, matchViewModel.SecondSetTieBreakChallanger, matchViewModel.SecondSetDefender, matchViewModel.SecondSetTieBreakDeffender));
+                sets.Add(this.GetSet(matchViewModel.SecondSetChellanger, matchViewModel.SecondSetTieBreakChallanger, matchViewModel.SecondSetDefender, matchViewModel.SecondSetTieBreakDeffender, 2));
             }
 
             return sets;
@@ -130,7 +130,11 @@ namespace TenisRanking.MatchProvider
 
         private void UpdateSets(MatchViewModel viewModel, MatchResult result)
         {
-            this.UpdateSet(viewModel.FirstSetChellanger, viewModel.FirstSetTieBreakChallanger, viewModel.FirstSetDefender, viewModel.FirstSetTieBreakDeffender, result.Sets.First());
+            this.UpdateSet(viewModel.FirstSetChellanger, viewModel.FirstSetTieBreakChallanger, viewModel.FirstSetDefender, viewModel.FirstSetTieBreakDeffender, result.Sets.OrderBy(s => s.Order).First());
+            if (viewModel.Type == MatchResultType.TwoSets)
+            {
+                this.UpdateSet(viewModel.SecondSetChellanger, viewModel.SecondSetTieBreakChallanger, viewModel.SecondSetDefender, viewModel.SecondSetTieBreakDeffender, result.Sets.OrderBy(s => s.Order).ElementAt(1));
+            }
         }
 
         private void UpdateSet(int challanger, int challengerTieBreak, int deffender, int deffenderTieBreak, MatchSet set)
@@ -149,10 +153,11 @@ namespace TenisRanking.MatchProvider
             }
         }
 
-        private MatchSet GetSet(int challanger, int challengerTieBreak, int deffender, int deffenderTieBreak)
+        private MatchSet GetSet(int challanger, int challengerTieBreak, int deffender, int deffenderTieBreak, int order)
         {
             return new MatchSet()
             {
+                Order = order,
                 Challanger = challanger,
                 Deffender = deffender,
                 ChallengerTieBreak = this.WasTieBreakPlayed(challengerTieBreak, deffenderTieBreak)

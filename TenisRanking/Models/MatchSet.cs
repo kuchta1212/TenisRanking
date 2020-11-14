@@ -13,6 +13,8 @@ namespace TenisRanking.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
 
+        public int Order { get; set; }
+
         public int Challanger { get; set; }
 
         public int Deffender { get; set; }
@@ -25,10 +27,10 @@ namespace TenisRanking.Models
         {
             if (this.ChallengerTieBreak == 0 && this.DeffenderTieBreak == 0)
             {
-                return this.Challanger + " : " + this.Deffender;
+                return this.Challanger + ":" + this.Deffender;
             }
 
-            return this.Challanger + " : " + this.Deffender + " (" + this.ChallengerTieBreak + " : " + this.DeffenderTieBreak + ")";
+            return this.Challanger + ":" + this.Deffender + " (" + this.ChallengerTieBreak + ":" + this.DeffenderTieBreak + ")";
         }
     }
 }

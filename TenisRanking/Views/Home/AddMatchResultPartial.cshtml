@@ -93,8 +93,23 @@
 <script type="text/javascript">
     $(function () {
 
-        document.getElementById('firstSetTieBreaks').style.visibility = "hidden";
-        document.getElementById('secondtSetTieBreaks').style.visibility = "hidden";
+        if (@Model.FirstSetTieBreakChallanger === 0 && @Model.FirstSetTieBreakDeffender === 0) {
+            document.getElementById('firstSetTieBreaks').style.visibility = "hidden";
+        } else {
+            document.getElementById('firstSetTieBreakCheckbox').checked = true;
+        }
+
+        if (@Model.SecondSetTieBreakChallanger === 0 && @Model.SecondSetTieBreakDeffender === 0) {
+            document.getElementById('secondtSetTieBreaks').style.visibility = "hidden";
+        } else {
+            document.getElementById('secondSetTieBreakCheckbox').checked = true;
+        }
+
+        if (document.getElementById('MatchTypeSelector').value === "TwoSets") {
+            document.getElementById('SecondSetChellanger').disabled = false;
+            document.getElementById('SecondSetDefender').disabled = false;
+        }
+
 
         var checkSet = function(chellanger, deffender, chellangerTie, deffenderTie) {
             if (chellanger === deffender) {
@@ -102,7 +117,7 @@
             }
 
             if (Math.abs(chellanger - deffender) === 1) {
-                if ((chellangerTie === deffenderTie) || Math.abs(chellangerTie - deffenderTie) !== 2) {
+                if ((chellangerTie === deffenderTie) || Math.abs(chellangerTie - deffenderTie) < 2) {
                     return false;
                 }
             }
@@ -166,11 +181,11 @@
                 }
             });
 
-       
+
 
         var resetFirstSetCustomValidity = function() {
             document.getElementById('FirstSetChellanger').setCustomValidity("");
-        } 
+        }
 
         document.getElementById('FirstSetChellanger').addEventListener('change', resetFirstSetCustomValidity);
         document.getElementById('FirstSetDefender').addEventListener('change', resetFirstSetCustomValidity);
@@ -179,13 +194,13 @@
 
         var resetSecondSetCustomValidity = function() {
             document.getElementById('SecondSetChellanger').setCustomValidity("");
-        } 
+        }
 
         document.getElementById('SecondSetChellanger').addEventListener('change', resetSecondSetCustomValidity);
         document.getElementById('SecondSetDefender').addEventListener('change', resetSecondSetCustomValidity);
         document.getElementById('SecondSetTieBreakChallanger').addEventListener('change', resetSecondSetCustomValidity);
         document.getElementById('SecondSetTieBreakDeffender').addEventListener('change', resetSecondSetCustomValidity);
-        
+
         document.getElementById('MatchTypeSelector').addEventListener('change',
             function () {
                 var result =  this.value !== "TwoSets";
@@ -193,7 +208,7 @@
                 document.getElementById('SecondSetChellanger').disabled = result;
                 document.getElementById('SecondSetDefender').disabled = result;
             });
-        
+
         $('body').on('onload',
             '.modal-link',
             function (e) {
