@@ -9,11 +9,11 @@
                     <span>x</span>
                 </button>
             </div>
-            <form id="AddMatchResultDialogForm" method="post", asp-controller="Home" asp-action="AddMatchResult">
+            <form id="AddMatchResultDialogForm" method="post", asp-controller="Home" asp-action="AddMatchResult" onload="hideTieBreaks()">
                 <div class="modal-body">
                     <div class="form-row">
                         <label asp-for="Type" class="control-label">Počet vítězných setů</label>
-                        <select asp-for="Type" class="form-control">
+                        <select id="MatchTypeSelector" asp-for="Type" class="form-control">
                             <option value="@MatchResultType.OneSet">Jeden</option>
                             <option value="@MatchResultType.TwoSets">Dva</option>
                         </select>
@@ -24,16 +24,21 @@
                     <div id="firstSetResults" class="form-row justify-content-center">
                         <div class="col">
                             <label asp-for="FirstSetChellanger">@Model.Challanger</label>
-                            <input asp-for="FirstSetChellanger" class="form-control" min="0" max="7" />
+                            <input asp-for="FirstSetChellanger" class="form-control" min="0" max="7" required />
                         </div>
                         <div class="col">
                             <label asp-for="FirstSetDefender">@Model.Deffender</label>
-                            <input asp-for="FirstSetDefender" class="form-control" min="0" max="7" />
+                            <input asp-for="FirstSetDefender" class="form-control" min="0" max="7" required />
                         </div>
                     </div>
                     <br />
-                    <h6>TieBreak</h6>
-                    <div if="firstSetTieBreaks" class="form-row justify-content-center">
+                    <div class="form-check">
+                        <div class="col">
+                            <input class="form-check-input" type="checkbox" value="" id="firstSetTieBreakCheckbox">
+                            <label for="firstSetTieBreakCheckbox">Zadat tie break prvního setu</label>
+                        </div>
+                    </div>
+                    <div id="firstSetTieBreaks" class="form-row justify-content-center">
                         <div class="col">
                             <label asp-for="FirstSetTieBreakChallanger">@Model.Challanger</label>
                             <input asp-for="FirstSetTieBreakChallanger" class="form-control" min="0" max="99" />
@@ -48,16 +53,21 @@
                     <div class="form-row justify-content-center">
                         <div class="col">
                             <label asp-for="SecondSetChellanger">@Model.Challanger</label>
-                            <input asp-for="SecondSetChellanger" class="form-control" min="0" max="7" />
+                            <input Id="SecondSetChellanger" asp-for="SecondSetChellanger" class="form-control" min="0" max="7" disabled />
                         </div>
                         <div class="col">
                             <label asp-for="SecondSetDefender">@Model.Deffender</label>
-                            <input asp-for="SecondSetDefender" class="form-control" min="0" max="7" />
+                            <input Id="SecondSetDefender" asp-for="SecondSetDefender" class="form-control" min="0" max="7" disabled />
                         </div>
                     </div>
                     <br />
-                    <h6>TieBreak</h6>
-                    <div if="firstSetTieBreaks" class="form-row justify-content-center">
+                    <div class="form-check">
+                        <div class="col">
+                            <input class="form-check-input" type="checkbox" value="" id="secondSetTieBreakCheckbox">
+                            <label for="secondSetTieBreakCheckbox">Zadat tie break druhého setu</label>
+                        </div>
+                    </div>
+                    <div id="secondtSetTieBreaks" class="form-row justify-content-center">
                         <div class="col">
                             <label asp-for="SecondSetTieBreakChallanger">@Model.Challanger</label>
                             <input asp-for="SecondSetTieBreakChallanger" class="form-control" min="0" max="99" />
@@ -81,8 +91,109 @@
 </div>
 
 <script type="text/javascript">
-
     $(function () {
+
+        document.getElementById('firstSetTieBreaks').style.visibility = "hidden";
+        document.getElementById('secondtSetTieBreaks').style.visibility = "hidden";
+
+        var checkSet = function(chellanger, deffender, chellangerTie, deffenderTie) {
+            if (chellanger === deffender) {
+                return false;
+            }
+
+            if (Math.abs(chellanger - deffender) === 1) {
+                if ((chellangerTie === deffenderTie) || Math.abs(chellangerTie - deffenderTie) !== 2) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        var checkResultFnc = function () {
+            var firstSetElement = document.getElementById('FirstSetChellanger');
+            var firstChallenger = firstSetElement.value;
+            var firstDeffender = document.getElementById('FirstSetDefender').value;
+            var firstTieChallenger = document.getElementById('FirstSetTieBreakChallanger').value;
+            var firstTieDeffender = document.getElementById('FirstSetTieBreakDeffender').value;
+
+            if (!checkSet(firstChallenger, firstDeffender, firstTieChallenger, firstTieDeffender)) {
+                firstSetElement.setCustomValidity("Výsledek prvního setu není v pořádku");
+                firstSetElement.reportValidity();
+                return false;
+            }
+
+            var type = document.getElementById('MatchTypeSelector').value;
+            if (type === "TwoSets") {
+                var secondSetElement = document.getElementById('SecondSetChellanger');
+                var secondChallenger = secondSetElement.value;
+                var secondtDeffender = document.getElementById('SecondSetDefender').value;
+                var secondTieChallenger = document.getElementById('SecondSetTieBreakChallanger').value;
+                var secondTieDeffender = document.getElementById('SecondSetTieBreakDeffender').value;
+                if (!checkSet(secondChallenger, secondtDeffender, secondTieChallenger, secondTieDeffender)) {
+                    secondSetElement.setCustomValidity("Výsledek druhého setu není v pořádku");
+                    secondSetElement.reportValidity();
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        document.getElementById('firstSetTieBreakCheckbox').addEventListener('change',
+            function () {
+                if (this.checked) {
+                    document.getElementById('firstSetTieBreaks').style.visibility = "visible";
+                } else {
+                    document.getElementById('firstSetTieBreaks').style.visibility = "hidden";
+                }
+            });
+
+        document.getElementById('secondSetTieBreakCheckbox').addEventListener('change',
+            function () {
+                if (this.checked) {
+                    document.getElementById('secondtSetTieBreaks').style.visibility = "visible";
+                } else {
+                    document.getElementById('secondtSetTieBreaks').style.visibility = "hidden";
+                }
+            });
+
+        document.getElementById('AddMatchResultDialogForm').addEventListener('submit',
+            function (event) {
+                if (!this.checkValidity() || !checkResultFnc()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+            });
+
+       
+
+        var resetFirstSetCustomValidity = function() {
+            document.getElementById('FirstSetChellanger').setCustomValidity("");
+        } 
+
+        document.getElementById('FirstSetChellanger').addEventListener('change', resetFirstSetCustomValidity);
+        document.getElementById('FirstSetDefender').addEventListener('change', resetFirstSetCustomValidity);
+        document.getElementById('FirstSetTieBreakChallanger').addEventListener('change', resetFirstSetCustomValidity);
+        document.getElementById('FirstSetTieBreakDeffender').addEventListener('change', resetFirstSetCustomValidity);
+
+        var resetSecondSetCustomValidity = function() {
+            document.getElementById('SecondSetChellanger').setCustomValidity("");
+        } 
+
+        document.getElementById('SecondSetChellanger').addEventListener('change', resetSecondSetCustomValidity);
+        document.getElementById('SecondSetDefender').addEventListener('change', resetSecondSetCustomValidity);
+        document.getElementById('SecondSetTieBreakChallanger').addEventListener('change', resetSecondSetCustomValidity);
+        document.getElementById('SecondSetTieBreakDeffender').addEventListener('change', resetSecondSetCustomValidity);
+        
+        document.getElementById('MatchTypeSelector').addEventListener('change',
+            function () {
+                var result =  this.value !== "TwoSets";
+
+                document.getElementById('SecondSetChellanger').disabled = result;
+                document.getElementById('SecondSetDefender').disabled = result;
+            });
+        
         $('body').on('onload',
             '.modal-link',
             function (e) {
