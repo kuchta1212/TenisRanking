@@ -23,12 +23,29 @@ namespace TenisRanking.Utils
             return level;
         }
 
-        public static bool CanChellange(int chellangerRank, int deffenderRank)
+        public static OpponentState GetOpponentState(Player signInPlayer, Player opponent, List<Match> challengedMatches, List<Match> plannedMatches)
         {
-            var chellengerLevel = Utils.GetLevel(chellangerRank);
-            var deffenderLevel = Utils.GetLevel(deffenderRank);
+            if (challengedMatches.Any(m => (m.Defender == opponent.Id || m.Chellanger == opponent.Id)))
+            {
+                return OpponentState.Challenged;
+            }
 
-            return (chellengerLevel - deffenderLevel) == 1 || ((chellengerLevel - deffenderLevel == 0) && deffenderRank < chellangerRank);
+            if (plannedMatches.Any(m => (m.Defender == opponent.Id || m.Chellanger == opponent.Id)))
+            {
+                return OpponentState.Planned;
+            }
+
+            var chellengerLevel = Utils.GetLevel(signInPlayer.Rank);
+            var deffenderLevel = Utils.GetLevel(opponent.Rank);
+
+
+            if ((chellengerLevel - deffenderLevel) == 1 ||
+                ((chellengerLevel - deffenderLevel == 0) && signInPlayer.Rank > opponent.Rank))
+            {
+                return OpponentState.CanChallenged;
+            }
+
+            return OpponentState.None;
         }
     }
 }

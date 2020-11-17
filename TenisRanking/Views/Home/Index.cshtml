@@ -55,33 +55,48 @@
                         <div class="card-body">
                             <h5 class="card-title">@player.PlayerName</h5>
                             <h6 class="card-subtitle mb-2">Poslední zápas:  @player.LastPlayedMatch.ToString("dd.MM yyyy")</h6>
-                            @if (SignInManager.IsSignedIn(User) && Model.Player.Id != player.Id && Utils.CanChellange(Model.Player.Rank, player.Rank))
-                            {
-                                <form method="Post">
-                                    <button class="btn btn-secondary btn-block" asp-controller="Home" asp-action="Challenge" asp-route-deffenderId="@player.Id">Vyzvat</button>
-                                </form>
-                            }
+                            @{
+                                var opponentState = Utils.GetOpponentState(Model.Player, player, Model.ChallengedMatches, Model.PlannedMatches);
+                                if (SignInManager.IsSignedIn(User) && Model.Player.Id != player.Id && opponentState != OpponentState.None)
+                                {
+                                    switch (opponentState)
+                                    {
+                                        case OpponentState.CanChallenged:
+                                            <form method="Post">
+                                                <button class="btn btn-secondary btn-block" asp-controller="Home" asp-action="Challenge" asp-route-deffenderId="@player.Id">Vyzvat</button>
+                                            </form>
+                                            break;
+                                        case OpponentState.Challenged:
+                                                <button class="btn btn-secondary btn-block" disabled>Vyzván</button>
+                                            break;
+                                        case OpponentState.Planned:
+                                            <button class="btn btn-secondary btn-block" disabled>Čeká se na výsledek</button>
+                                            break;
+                                    }
+
+                                }
+                        }
                         </div>
                         @Html.Raw("</div>")
                         level = playerLevel;
-                    }
-                    @Html.Raw("</div>")
+                                        }
+                                        @Html.Raw("</div>")
                 }
             </div>
         </div>
     </div>
     <div class="container">
         @if (SignInManager.IsSignedIn(User))
-        {
+                                    {
             <div class="row padding">
                 <div class="col-sm opacity-table">
                     <h3>Výzvy</h3>
                     <table class="table table-striped">
                         <tbody>
                             @foreach (var challengedMatch in Model.ChallengedMatches)
-                            {
-                                if (challengedMatch.Defender == Model.Player.Id)
-                                {
+                                    {
+                                        if (challengedMatch.Defender == Model.Player.Id)
+                                        {
                                     <tr>
                                         <td class="bg-danger">
                                             <img src="images/icons/incoming.png" />
@@ -127,7 +142,7 @@
                     <table class="table table-hover">
                         <tbody>
                             @foreach (var plannedMatch in Model.PlannedMatches)
-                            {
+                                {
                                 <tr>
                                     <td>
                                         @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == plannedMatch.Defender).PlayerName)
@@ -153,7 +168,7 @@
                     <table class="table table-hover">
                         <tbody>
                         @foreach (var refusedMatch in Model.RefusedMatches)
-                        {
+                                {
                             <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == refusedMatch.Defender).PlayerName)
@@ -181,7 +196,7 @@
                     <table class="table table-hover">
                         <tbody>
                         @foreach (var waitingForConfirmation in Model.WaitingForConfirmationMatches)
-                        {
+                                {
                             <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == waitingForConfirmation.Defender).PlayerName)
@@ -216,15 +231,15 @@
                     <table class="table table-hover">
                         <tbody>
                             @foreach (var playedMatch in Model.PlayedMatches)
-                            {
-                                if (playedMatch.Chellanger == Model.Player.Id && playedMatch.IsChallangerWinner() || playedMatch.Defender == Model.Player.Id && !playedMatch.IsChallangerWinner())
                                 {
-                                    @Html.Raw("<tr class=\"text-success\">")
-                                }
-                                else
-                                {
-                                    @Html.Raw("<tr class=\"text-danger\">")
-                                }
+                                    if (playedMatch.Chellanger == Model.Player.Id && playedMatch.IsChallangerWinner() || playedMatch.Defender == Model.Player.Id && !playedMatch.IsChallangerWinner())
+                                    {
+                                        @Html.Raw("<tr class=\"text-success\">")
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<tr class=\"text-danger\">")
+                                    }
                             <td>
                                 @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == playedMatch.Defender).PlayerName)
                             </td>
