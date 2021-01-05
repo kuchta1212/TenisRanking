@@ -37,13 +37,19 @@ namespace TenisRanking.Data
 
         public List<Match> GetAllMatches()
         {
-            return this.dbContext.Matches.Include(m => m.Result).Include(m => m.Result.Sets).Where(x => x.Status == MatchStatus.Played).ToList();
+            return this.dbContext.Matches
+                .Include(m => m.Result)
+                .Include(m => m.Result.Sets)
+                .Where(x => x.Status == MatchStatus.Played)
+                .OrderByDescending(m => m.DateOfGame)
+                .ToList();
         }
 
         public List<Match> GetAllPlayedMatchesForPlayer(string playerId)
         {
             return this.dbContext.Matches.Include(m => m.Result).Include(m => m.Result.Sets)
                 .Where(m => (m.Defender == playerId || m.Chellanger == playerId) && m.Status == MatchStatus.Played)
+                .OrderByDescending(m => m.DateOfGame)
                 .ToList();
         }
 

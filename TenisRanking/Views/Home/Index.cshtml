@@ -205,7 +205,7 @@
                                     @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == waitingForConfirmation.Chellanger).PlayerName)
                                 </td>
                                 <td>
-                                    @Html.Raw(waitingForConfirmation.Result.ToString())
+                                    @Html.Raw(waitingForConfirmation.Result.ToString(waitingForConfirmation.IsChallangerWinner()))
                                 </td>
                                 @if (waitingForConfirmation.Result.CreatedBy != Model.Player.Id)
                                 {
@@ -247,7 +247,7 @@
                                 @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == playedMatch.Chellanger).PlayerName)
                             </td>
                             <td>
-                                @Html.Raw(playedMatch.Result.ToString())
+                                @Html.Raw(playedMatch.Result.ToString(playedMatch.IsChallangerWinner()))
                             </td>
                             @Html.Raw("</tr>")
                             }
@@ -271,7 +271,7 @@
                                     @Html.DisplayFor(modelItem => Model.Players.FirstOrDefault(x => x.Id == match.Chellanger).PlayerName)
                                     @Html.Raw("</div>")
                                     <td>
-                                        @Html.Raw(match.Result.ToString())
+                                        @Html.Raw(match.Result.ToString(match.IsChallangerWinner()))
                                     </td>                                    
                                 </tr>
                                 }

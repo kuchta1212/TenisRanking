@@ -94,8 +94,7 @@ namespace TenisRanking.MatchProvider
         {
             return match.Result.Type == MatchResultType.OneSet
                 ? this.DidChallangerWinThisSet(match.Result.Sets.First())
-                : this.DidChallangerWinThisSet(match.Result.Sets.OrderBy(s => s.Order).First()) &&
-                  this.DidChallangerWinThisSet(match.Result.Sets.OrderBy(s => s.Order).ElementAt(1));
+                : this.DidChallangerWinThisSet(match.Result.Sets.OrderBy(s => s.Order).ElementAt(1));
         }
 
         private bool DidChallangerWinThisSet(MatchSet set)
@@ -105,12 +104,7 @@ namespace TenisRanking.MatchProvider
                 return true;
             }
 
-            if (set.Challanger > set.Deffender && set.ChallengerTieBreak > set.DeffenderTieBreak)
-            {
-                return true;
-            }
-
-            return false;
+            return set.ChallengerTieBreak > set.DeffenderTieBreak;    
         }
 
         private List<MatchSet> GetSets(MatchViewModel matchViewModel)

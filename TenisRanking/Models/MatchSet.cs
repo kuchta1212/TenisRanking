@@ -23,14 +23,20 @@ namespace TenisRanking.Models
 
         public int DeffenderTieBreak { get; set; }
 
-        public override string ToString()
+        public string ToString(bool reverseOrdering)
         {
             if (this.ChallengerTieBreak == 0 && this.DeffenderTieBreak == 0)
             {
-                return this.Challanger + ":" + this.Deffender;
+                return reverseOrdering
+                    ? this.Deffender + ":" + this.Challanger
+                    : this.Challanger + ":" + this.Deffender;
             }
 
-            return this.Challanger + ":" + this.Deffender + " (" + this.ChallengerTieBreak + ":" + this.DeffenderTieBreak + ")";
+            return reverseOrdering
+                ? this.Deffender + ":" + this.Challanger + " (" + this.DeffenderTieBreak + ":" +
+                  this.ChallengerTieBreak + ")"
+                : this.Challanger + ":" + this.Deffender + " (" + this.ChallengerTieBreak + ":" +
+                  this.DeffenderTieBreak + ")";
         }
     }
 }

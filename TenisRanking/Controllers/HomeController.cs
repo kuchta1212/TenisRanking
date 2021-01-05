@@ -32,7 +32,6 @@ namespace TenisRanking.Controllers
             this.matchProvider = matchProvider;
             this.emailController = emailController;
             this.viewMessageFactory = viewMessageFactory;
-
         }
 
 
