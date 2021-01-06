@@ -63,7 +63,7 @@
                     <br />
                     <div class="form-check">
                         <div class="col">
-                            <input class="form-check-input" type="checkbox" value="" id="secondSetTieBreakCheckbox">
+                            <input class="form-check-input" type="checkbox" value="" id="secondSetTieBreakCheckbox" disabled>
                             <label for="secondSetTieBreakCheckbox">Zadat tie break druhého setu</label>
                         </div>
                     </div>
@@ -207,6 +207,11 @@
 
                 document.getElementById('SecondSetChellanger').disabled = result;
                 document.getElementById('SecondSetDefender').disabled = result;
+                document.getElementById('secondSetTieBreakCheckbox').disabled = result;
+                if (result) {
+                    document.getElementById('secondtSetTieBreaks').style.visibility = "hidden";    
+                }
+                
             });
 
         $('body').on('onload',
