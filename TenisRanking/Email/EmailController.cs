@@ -41,15 +41,15 @@ namespace TenisRanking.Email
             return true;
         }
 
-        public Task<bool> SendChallangeEmail(string mailTo, string name, string challanger)
+        public Task<bool> SendChallangeEmail(string mailTo, string name, string challanger, string challangerEmail)
         {
-            var email = $"<h1>Byl si vyzván!</h1><p>Byl si vyzván na zápas.</p></br><p><b>Vyzivatel:</b> {challanger}</p></br></br><p>Prosím reaguj na tuto výzvu na webu: <a href=\"https://tenis-svoboda.azurewebsites.net\">Žebříček Svoboda</a></p>";
+            var email = $"<h1>Byl si vyzván!</h1><p>Byl si vyzván na zápas.</p></br><p><b>Vyzivatel:</b> {challanger}</p></br></br><p>V případě zájmu kontakt na prtoihráče {challangerEmail}</p></br></br><p>Prosím reaguj na tuto výzvu na webu: <a href=\"https://tenis-svoboda.azurewebsites.net\">Žebříček Svoboda</a></p>";
             return this.SendEmail(mailTo, name, email, "Svoboda tenis žebříček - Výzva k zápasu");
         }
 
-        public Task<bool> SendChallangeAcceptedEmail(string mailTo, string name, string deffender)
+        public Task<bool> SendChallangeAcceptedEmail(string mailTo, string name, string deffender, string deffenderEmail)
         {
-            var email = $"<h1>Výzva byla přijata!</h1><p>Tvoje výzva byla přijata.</p></br><p><b>Vyzivatel:</b> {name}</p></br><p><b>Obhájce:</b> {deffender}</p></br></br><p>Nezapomeňte zadat výsledek pak na web: <a href=\"https://tenis-svoboda.azurewebsites.net\">Žebříček Svoboda</a></p>";
+            var email = $"<h1>Výzva byla přijata!</h1><p>Tvoje výzva byla přijata.</p></br><p><b>Vyzivatel:</b> {name}</p></br><p><b>Obhájce:</b> {deffender}</p></br></br><p>Kontakt na protihráče {deffenderEmail}</p></br></br><p>Nezapomeňte zadat výsledek pak na web: <a href=\"https://tenis-svoboda.azurewebsites.net\">Žebříček Svoboda</a></p>";
             return this.SendEmail(mailTo, name, email, "Svoboda tenis žebříček - Výzva přijmuta");
         }
 

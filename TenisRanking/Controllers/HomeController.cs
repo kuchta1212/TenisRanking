@@ -82,7 +82,7 @@ namespace TenisRanking.Controllers
 
                 var challenger = this.context.GetPlayer(match.Chellanger);
                 var deffender = this.context.GetPlayer(match.Defender);
-                this.emailController.SendChallangeEmail(deffender.UserName, deffender.PlayerName, challenger.PlayerName);
+                this.emailController.SendChallangeEmail(deffender.UserName, deffender.PlayerName, challenger.PlayerName, challenger.UserName);
 
                 return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ChallengeSended });
             }
@@ -105,7 +105,7 @@ namespace TenisRanking.Controllers
 
                 var challenger = this.context.GetPlayer(match.Chellanger);
                 var deffender = this.context.GetPlayer(match.Defender);
-                this.emailController.SendChallangeAcceptedEmail(challenger.UserName, challenger.PlayerName, deffender.PlayerName);
+                this.emailController.SendChallangeAcceptedEmail(challenger.UserName, challenger.PlayerName, deffender.PlayerName, deffender.UserName);
 
                 return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ChallangeAccpeted});
             }
