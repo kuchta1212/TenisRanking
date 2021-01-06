@@ -14,5 +14,7 @@ namespace TenisRanking.Email
         Task<bool> SendChallangeRefusedEmail(string mailTo, string name, string deffender);
 
         Task<bool> SendRegisterConfirmationEmail(string to, string name, string subject, string body);
+
+        Task<bool> SendConfirmResultEmail(string to, string name);
     }
 }

@@ -195,7 +195,12 @@ namespace TenisRanking.Controllers
         {
             try
             {
-                this.matchProvider.SetFinalMatchResult(matchViewModel, this.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var match = this.context.GetMatch(matchViewModel.MatchId);
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                this.matchProvider.SetFinalMatchResult(matchViewModel, userId);
+                var receiverId = match.Defender == userId ? match.Chellanger : match.Defender;
+                var player = this.context.GetPlayer(receiverId);
+                this.emailController.SendConfirmResultEmail(player.UserName, player.PlayerName);
 
                 return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ResultAdded });
             }

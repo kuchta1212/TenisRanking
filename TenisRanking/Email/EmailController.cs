@@ -60,6 +60,11 @@ namespace TenisRanking.Email
         }
 
         public Task<bool> SendRegisterConfirmationEmail(string to, string name, string subject, string body) => this.SendEmail(to, name, body, subject);
-        
+
+        public Task<bool> SendConfirmResultEmail(string to, string name)
+        {
+            var email = $"<h1>Výsledek čeká na potvrzení!</h1><p>Výsledek z tvého posledního zápasu čeká na potvrzení. Od této chvíle máte 48h na kontrolu a potvrzení nebo opravení. </p></br></br><p><a href=\"https://tenis-svoboda.azurewebsites.net\">Žebříček Svoboda</a></p>";
+            return this.SendEmail(to, name, email, "Svoboda tenis žebříček - Výsledek čeká na potvrzení");
+        }
     }
 }
