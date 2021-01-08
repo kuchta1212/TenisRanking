@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using TenisRanking.Data;
+using TenisRanking.Job;
 using TenisRanking.Models;
 
 namespace TenisRanking.MatchProvider

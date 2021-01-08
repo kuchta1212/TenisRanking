@@ -127,6 +127,11 @@ namespace TenisRanking.Data
             match.Status = MatchStatus.Played;
             this.dbContext.SaveChanges();
         }
+
+        public List<Match> GetMatchesWithUnConfirmedResults()
+        {
+            return this.dbContext.Matches.Where(m => m.Status == MatchStatus.WaitingForConfirmation).ToList();
+        }
     }
 }
 

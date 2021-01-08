@@ -22,12 +22,9 @@ namespace TenisRanking.Models
 
         public string CreatedBy { get; set; }
 
-        public string ToString(bool reverseOrdering)
+        public override string ToString()
         {
-            var setStrings = this.Sets.OrderBy(s => s.Order).Select(s => s.ToString(reverseOrdering));
-
-            return string.Join(", ", setStrings);
-
+            return string.Join(", ", this.Sets.OrderBy(s => s.Order));
         }
     }
 }

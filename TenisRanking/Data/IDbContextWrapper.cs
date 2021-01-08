@@ -39,5 +39,7 @@ namespace TenisRanking.Data
         void UpdatePlayer(Player player);
 
         void ConfirmResult(string matchId);
+
+        List<Match> GetMatchesWithUnConfirmedResults();
     }
 }

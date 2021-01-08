@@ -58,16 +58,15 @@ namespace TenisRanking
 
             services.Configure<MatchDaysLimitOptions>(opt =>
             {
-                opt.Enabled = Configuration.GetSection("Email").GetValue<bool>("Enabled");
+                opt.Enabled = Configuration.GetSection("MaxDaysLimitations").GetValue<bool>("Enabled");
                 opt.Days = int.Parse(Configuration.GetSection("MaxDaysLimitations").GetValue<string>("Days"));
                 opt.LevelDrop = int.Parse(Configuration.GetSection("MaxDaysLimitations").GetValue<string>("LevelDrop"));
             });
 
-            services.Configure<MatchDaysLimitOptions>(opt =>
+            services.Configure<ConfirmationPeriodOptions>(opt =>
             {
-                opt.Enabled = Configuration.GetSection("MaxDaysLimitations").GetValue<bool>("Enabled");
-                opt.Days = int.Parse(Configuration.GetSection("MaxDaysLimitations").GetValue<string>("Days"));
-                opt.LevelDrop = int.Parse(Configuration.GetSection("MaxDaysLimitations").GetValue<string>("LevelDrop"));
+                opt.Enabled = Configuration.GetSection("ConfirmationPeriod").GetValue<bool>("Enabled");
+                opt.Hours = int.Parse(Configuration.GetSection("ConfirmationPeriod").GetValue<string>("Hours"));
             });
 
             services.AddLocalization(o => o.ResourcesPath = "Resources");
@@ -99,11 +98,31 @@ namespace TenisRanking
                 q.AddTrigger(t => t
                     .WithIdentity("Cron Trigger")
                     .ForJob(jobKey)
-                    //.StartAt(DateBuilder.TodayAt(23,55,00))
-                    .StartNow()
-                    .WithSimpleSchedule(x => x.WithInterval(TimeSpan.FromSeconds(30)).RepeatForever())
+                    .StartAt(DateBuilder.TodayAt(23,55,00))
+                    .WithSimpleSchedule(x => x.WithInterval(TimeSpan.FromDays(1)).RepeatForever())
                     .WithDescription("match limit trigger")
                 );             
+            });
+
+            var jobKey2 = new JobKey("confirmationPeriodJob");
+            services.AddTransient<ConfirmationPeriodJob>();
+            services.AddQuartz(q =>
+            {
+                q.SchedulerId = "Scheduler-Core-2";
+                q.SchedulerName = "Scheduler-Core-2";
+                q.UseMicrosoftDependencyInjectionScopedJobFactory();
+
+                q.AddJob<ConfirmationPeriodJob>(j => j
+                    .WithIdentity(jobKey2)
+                );
+
+                q.AddTrigger(t => t
+                    .WithIdentity("Cron Trigger 2")
+                    .ForJob(jobKey2)
+                    .StartAt(DateBuilder.TodayAt(23,55,00))
+                    .WithSimpleSchedule(x => x.WithInterval(TimeSpan.FromDays(1)).RepeatForever())
+                    .WithDescription("confirmation period trigger")
+                );
             });
 
             services.AddQuartzServer(options =>
