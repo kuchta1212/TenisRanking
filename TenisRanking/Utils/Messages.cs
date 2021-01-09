@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.CodeAnalysis.Operations;
 
 namespace TenisRanking.Models
 {
@@ -18,5 +19,13 @@ namespace TenisRanking.Models
         public static string ResultAdded = nameof(ResultAdded);
 
         public static string ResultConfirmed = nameof(ResultConfirmed);
+
+        public static string ChallangeEmail = nameof(ChallangeEmail);
+
+        public static string ChallangeAcceptedEmail = nameof(ChallangeAcceptedEmail);
+
+        public static string ChallangeRefusedEmail = nameof(ChallangeRefusedEmail);
+
+        public static string ConfirmResultEmail = nameof(ConfirmResultEmail);
     }
 }

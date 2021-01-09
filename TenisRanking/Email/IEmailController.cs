@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TenisRanking.Models;
 
 namespace TenisRanking.Email
 {
     public interface IEmailController
     {
-        Task<bool> SendChallangeEmail(string mailTo, string name, string challanger, string challengeEmail);
+        Task<bool> SendChallangeEmail(Player deffender, Player challanger, string matchId);
 
-        Task<bool> SendChallangeAcceptedEmail(string mailTo, string name, string deffender, string deffenderEmail);
+        Task<bool> SendChallangeAcceptedEmail(Player deffender, Player challanger);
 
-        Task<bool> SendChallangeRefusedEmail(string mailTo, string name, string deffender);
+        Task<bool> SendChallangeRefusedEmail(string mailTo, string name, Player deffender, string matchId);
 
         Task<bool> SendRegisterConfirmationEmail(string to, string name, string subject, string body);
 

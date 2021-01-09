@@ -10,9 +10,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite.Internal.IISUrlRewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using TenisRanking.Data;
 using TenisRanking.Email;
+using TenisRanking.Job;
 using TenisRanking.MatchProvider;
 using TenisRanking.Models;
 using TenisRanking.Utils;
@@ -25,13 +27,15 @@ namespace TenisRanking.Controllers
         private readonly IMatchProvider matchProvider;
         private readonly IEmailController emailController;
         private readonly IViewMessageFactory viewMessageFactory;
+        private readonly IOptions<MatchDaysLimitOptions> matchDaysLimitOptions;
 
-        public HomeController(IDbContextWrapper context, IMatchProvider matchProvider, IEmailController emailController, IViewMessageFactory viewMessageFactory)
+        public HomeController(IDbContextWrapper context, IMatchProvider matchProvider, IEmailController emailController, IViewMessageFactory viewMessageFactory, IOptions<MatchDaysLimitOptions> matchDaysLimitOptions)
         {
             this.context = context;
             this.matchProvider = matchProvider;
             this.emailController = emailController;
             this.viewMessageFactory = viewMessageFactory;
+            this.matchDaysLimitOptions = matchDaysLimitOptions;
         }
 
 
@@ -82,7 +86,8 @@ namespace TenisRanking.Controllers
 
                 var challenger = this.context.GetPlayer(match.Chellanger);
                 var deffender = this.context.GetPlayer(match.Defender);
-                this.emailController.SendChallangeEmail(deffender.UserName, deffender.PlayerName, challenger.PlayerName, challenger.UserName);
+                
+                this.emailController.SendChallangeEmail(deffender, challenger, match.Id);
 
                 return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ChallengeSended });
             }
@@ -105,7 +110,7 @@ namespace TenisRanking.Controllers
 
                 var challenger = this.context.GetPlayer(match.Chellanger);
                 var deffender = this.context.GetPlayer(match.Defender);
-                this.emailController.SendChallangeAcceptedEmail(challenger.UserName, challenger.PlayerName, deffender.PlayerName, deffender.UserName);
+                this.emailController.SendChallangeAcceptedEmail(deffender, challenger);
 
                 return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ChallangeAccpeted});
             }

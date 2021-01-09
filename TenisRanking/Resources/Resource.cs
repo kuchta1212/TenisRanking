@@ -6,9 +6,9 @@ using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace TenisRanking.Resources
 {
-    public static class Resource
+    public class Resource
     {
-        public static Dictionary<string, string> Messages  = new Dictionary<string, string>()
+        public Dictionary<string, string> Messages  = new Dictionary<string, string>()
         {
             { "ChallangeAccpeted", "Výzva přijata"},
             { "ChallengeRefused", "Výzva odmítnuta"},

@@ -69,12 +69,13 @@ namespace TenisRanking
                 opt.Hours = int.Parse(Configuration.GetSection("ConfirmationPeriod").GetValue<string>("Hours"));
             });
 
-            services.AddLocalization(o => o.ResourcesPath = "Resources");
+            services.AddLocalization();
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 var supportedCultures = new[]
                 {
                     new CultureInfo("en-US"),
+                    new CultureInfo("cs-CS"), 
                 };
                 options.DefaultRequestCulture = new RequestCulture("en-US", "en-US");
 
