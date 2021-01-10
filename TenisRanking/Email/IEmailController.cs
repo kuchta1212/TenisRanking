@@ -16,6 +16,6 @@ namespace TenisRanking.Email
 
         Task<bool> SendRegisterConfirmationEmail(string to, string name, string subject, string body);
 
-        Task<bool> SendConfirmResultEmail(string to, string name);
+        Task<bool> SendConfirmResultEmail(Player deffender, Player challanger, Match match, bool isReceiverDeffender);
     }
 }

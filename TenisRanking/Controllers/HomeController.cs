@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite.Internal.IISUrlRewrite;
@@ -21,24 +22,23 @@ using TenisRanking.Utils;
 
 namespace TenisRanking.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IDbContextWrapper context;
         private readonly IMatchProvider matchProvider;
         private readonly IEmailController emailController;
         private readonly IViewMessageFactory viewMessageFactory;
-        private readonly IOptions<MatchDaysLimitOptions> matchDaysLimitOptions;
 
-        public HomeController(IDbContextWrapper context, IMatchProvider matchProvider, IEmailController emailController, IViewMessageFactory viewMessageFactory, IOptions<MatchDaysLimitOptions> matchDaysLimitOptions)
+        public HomeController(IDbContextWrapper context, IMatchProvider matchProvider, IEmailController emailController, IViewMessageFactory viewMessageFactory)
         {
             this.context = context;
             this.matchProvider = matchProvider;
             this.emailController = emailController;
             this.viewMessageFactory = viewMessageFactory;
-            this.matchDaysLimitOptions = matchDaysLimitOptions;
         }
 
-
+        [AllowAnonymous]
         public IActionResult Index(MessageStatus status, string message)
         {
             var userId = this.User.Identity.IsAuthenticated ? this.User.FindFirstValue(ClaimTypes.NameIdentifier) : string.Empty;
@@ -97,7 +97,31 @@ namespace TenisRanking.Controllers
                 return RedirectToAction("Index", MessageStatus.ERROR.ToString(), e.ToString());
             }
             
-        } 
+        }
+
+        public IActionResult ReChallenge(string matchId)
+        {
+            try
+            {
+                var match = this.context.GetMatch(matchId);
+                match.Status = MatchStatus.Challanged;
+
+                this.context.UpdateMatch(match);
+
+                var challenger = this.context.GetPlayer(match.Chellanger);
+                var deffender = this.context.GetPlayer(match.Defender);
+
+                this.emailController.SendChallangeEmail(deffender, challenger, match.Id);
+
+                return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ChallengeSended });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return RedirectToAction("Index", MessageStatus.ERROR.ToString(), e.ToString());
+            }
+
+        }
 
         public IActionResult AcceptChallange(string matchId)
         {
@@ -132,7 +156,7 @@ namespace TenisRanking.Controllers
 
                 var challenger = this.context.GetPlayer(match.Chellanger);
                 var deffender = this.context.GetPlayer(match.Defender);
-                this.emailController.SendChallangeRefusedEmail(challenger.UserName, challenger.PlayerName, deffender.PlayerName);
+                this.emailController.SendChallangeRefusedEmail(challenger.UserName, challenger.PlayerName, deffender, matchId);
 
                 return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ChallengeRefused });
             }
@@ -203,9 +227,14 @@ namespace TenisRanking.Controllers
                 var match = this.context.GetMatch(matchViewModel.MatchId);
                 var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 this.matchProvider.SetFinalMatchResult(matchViewModel, userId);
-                var receiverId = match.Defender == userId ? match.Chellanger : match.Defender;
-                var player = this.context.GetPlayer(receiverId);
-                this.emailController.SendConfirmResultEmail(player.UserName, player.PlayerName);
+                var deffender = this.context.GetPlayer(match.Defender);
+                var challanger = this.context.GetPlayer(match.Chellanger);
+                
+                this.emailController.SendConfirmResultEmail(
+                    match.Defender == userId ? challanger : deffender, 
+                    match.Defender == userId ? deffender : challanger, 
+                    match,
+                    match.Chellanger == userId);
 
                 return RedirectToAction("Index", new { status = MessageStatus.SUCCESS.ToString(), message = Messages.ResultAdded });
             }

@@ -103,9 +103,12 @@ namespace TenisRanking.Data
 
         public void DeleteMatch(string matchId)
         {
-            this.dbContext.Remove(matchId);
-
-            this.dbContext.SaveChanges();
+            var match = this.dbContext.Matches.FirstOrDefault(m => m.Id == matchId);
+            if (match != null)
+            {
+                this.dbContext.Remove(match);
+                this.dbContext.SaveChanges();
+            }
         }
 
         public List<Player> GetPlayersInRanks(int higherRank, int lowerRank, bool includeEdges = false)

@@ -27,5 +27,9 @@ namespace TenisRanking.Models
         public static string ChallangeRefusedEmail = nameof(ChallangeRefusedEmail);
 
         public static string ConfirmResultEmail = nameof(ConfirmResultEmail);
+
+        public static string EmailFormat = nameof(EmailFormat);
+
+        public static string RegisterEmail = nameof(RegisterEmail);
     }
 }

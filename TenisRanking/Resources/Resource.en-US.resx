@@ -118,186 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ChallangeAcceptedEmail" xml:space="preserve">
-    <value>&lt;HTML xmlns="http://www.w3.org/1999/xhtml"&gt;
-	&lt;HEAD&gt;
-		&lt;TITLE&gt;LTC Svoboda - Žebříček&lt;/TITLE&gt;
-		&lt;META content="text/html; charset=UTF-8" http-equiv=Content-Type&gt;&lt;META name=viewport content=width=device-width&gt;
-			&lt;STYLE type=text/css&gt;BODY {
-				HEIGHT: 100% !important; WIDTH: 100% !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				TABLE {
-					BORDER-COLLAPSE: separate
-				}
-				IMG {
-					BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-TOP-WIDTH: 0px
-				}
-				A IMG {
-					BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-TOP-WIDTH: 0px
-				}
-				H1 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H2 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H3 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H4 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H5 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H6 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				P {
-					MARGIN: 1em 0px
-				}
-				.ReadMsgBody {
-					WIDTH: 100%
-				}
-				.ExternalClass {
-					WIDTH: 100%
-				}
-				.ExternalClass {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass P {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass SPAN {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass FONT {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass TD {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass DIV {
-					LINE-HEIGHT: 100%
-				}
-				TABLE {
-					mso-table-lspace: 0pt; mso-table-rspace: 0pt
-				}
-				TD {
-					mso-table-lspace: 0pt; mso-table-rspace: 0pt
-				}
-				#outlook A {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px
-				}
-				IMG {
-					-MS-INTERPOLATION-MODE: bicubic
-				}
-				BODY {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				TABLE {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				TD {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				P {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				A {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				LI {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				BLOCKQUOTE {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				IMG {
-					MAX-WIDTH: 100%; HEIGHT: auto
-				}
-
-				@media Unknown    
-				{
-				.shrink_font {
-					FONT-SIZE: 62px
-				}
-				#foxeslab-email .table1 {
-					WIDTH: 90% !important
-				}
-				#foxeslab-email .table1-2 {
-					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
-				}
-				#foxeslab-email .table1-3 {
-					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
-				}
-				#foxeslab-email .table1-4 {
-					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
-				}
-				#foxeslab-email .table1-5 {
-					WIDTH: 90% !important; MARGIN-LEFT: 5%; MARGIN-RIGHT: 5%
-				}
-				#foxeslab-email .tablet_no_float {
-					WIDTH: 100% !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .tablet_wise_float {
-					WIDTH: auto !important; FLOAT: none !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .tablet_hide {
-					DISPLAY: none !important
-				}
-				#foxeslab-email .image1 {
-					WIDTH: 98% !important
-				}
-				#foxeslab-email .image1-290 {
-					MAX-WIDTH: 290px !important; WIDTH: 100% !important
-				}
-				.center_content {
-					TEXT-ALIGN: center !important
-				}
-				.center_image {
-					MARGIN: 0px auto
-				}
-				.center_button {
-					MAX-WIDTH: 250px !important; WIDTH: 50% !important; MARGIN-LEFT: 25% !important
-				}
-				.centerize {
-					MARGIN: 0px auto
-				}
-				.shrink_font {
-					FONT-SIZE: 48px
-				}
-				.safe_color {
-					COLOR: #6a1b9a !important
-				}
-				BODY {
-					WIDTH: 100% !important; MIN-WIDTH: 100% !important
-				}
-				TABLE[class='flexibleContainer'] {
-					WIDTH: 100% !important
-				}
-				IMG[class='flexibleImage'] {
-					HEIGHT: auto !important; WIDTH: 100% !important
-				}
-				#foxeslab-email .table1 {
-					WIDTH: 98% !important
-				}
-				#foxeslab-email .no_float {
-					WIDTH: 100% !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .wise_float {
-					WIDTH: auto !important; FLOAT: none !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .mobile_hide {
-					DISPLAY: none !important
-				}
-				.auto_height {
-					HEIGHT: auto !important
-				}
-			}
-&lt;/STYLE&gt;
-
-&lt;/HEAD&gt;
-&lt;BODY id=foxeslab-email style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;
+    <value>&lt;BODY id=foxeslab-email style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;
 	&lt;TABLE class="table_full editable-bg-color bg_color_ffffff editable-bg-image" style="BACKGROUND-IMAGE: url(#); BORDER-COLLAPSE: collapse; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left center; background-size: 100% 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt" cellSpacing=0 cellPadding=0 width="100%" align=center bgColor=#ffffff background=# border=0 mc:variant="Header" mc:repeatable="castellab"&gt;&lt;!-- padding-top --&gt;
 	&lt;TBODY&gt;
 		&lt;TR&gt;
@@ -386,192 +207,13 @@
 						&lt;/TD&gt;
 					&lt;/TR&gt;&lt;!-- END body --&gt;&lt;!-- padding-bottom --&gt;
 &lt;TR&gt;
-&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;</value>
+&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;</value>
   </data>
   <data name="ChallangeAccpeted" xml:space="preserve">
     <value>Výzva přijata</value>
   </data>
   <data name="ChallangeEmail" xml:space="preserve">
-    <value>&lt;HTML xmlns="http://www.w3.org/1999/xhtml"&gt;
-	&lt;HEAD&gt;
-		&lt;TITLE&gt;LTC Svoboda - Žebříček&lt;/TITLE&gt;
-		&lt;META content="text/html; charset=UTF-8" http-equiv=Content-Type&gt;&lt;META name=viewport content=width=device-width&gt;
-			&lt;STYLE type=text/css&gt;BODY {
-				HEIGHT: 100% !important; WIDTH: 100% !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				TABLE {
-					BORDER-COLLAPSE: separate
-				}
-				IMG {
-					BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-TOP-WIDTH: 0px
-				}
-				A IMG {
-					BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-TOP-WIDTH: 0px
-				}
-				H1 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H2 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H3 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H4 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H5 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H6 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				P {
-					MARGIN: 1em 0px
-				}
-				.ReadMsgBody {
-					WIDTH: 100%
-				}
-				.ExternalClass {
-					WIDTH: 100%
-				}
-				.ExternalClass {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass P {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass SPAN {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass FONT {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass TD {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass DIV {
-					LINE-HEIGHT: 100%
-				}
-				TABLE {
-					mso-table-lspace: 0pt; mso-table-rspace: 0pt
-				}
-				TD {
-					mso-table-lspace: 0pt; mso-table-rspace: 0pt
-				}
-				#outlook A {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px
-				}
-				IMG {
-					-MS-INTERPOLATION-MODE: bicubic
-				}
-				BODY {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				TABLE {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				TD {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				P {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				A {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				LI {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				BLOCKQUOTE {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				IMG {
-					MAX-WIDTH: 100%; HEIGHT: auto
-				}
-
-				@media Unknown    
-				{
-				.shrink_font {
-					FONT-SIZE: 62px
-				}
-				#foxeslab-email .table1 {
-					WIDTH: 90% !important
-				}
-				#foxeslab-email .table1-2 {
-					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
-				}
-				#foxeslab-email .table1-3 {
-					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
-				}
-				#foxeslab-email .table1-4 {
-					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
-				}
-				#foxeslab-email .table1-5 {
-					WIDTH: 90% !important; MARGIN-LEFT: 5%; MARGIN-RIGHT: 5%
-				}
-				#foxeslab-email .tablet_no_float {
-					WIDTH: 100% !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .tablet_wise_float {
-					WIDTH: auto !important; FLOAT: none !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .tablet_hide {
-					DISPLAY: none !important
-				}
-				#foxeslab-email .image1 {
-					WIDTH: 98% !important
-				}
-				#foxeslab-email .image1-290 {
-					MAX-WIDTH: 290px !important; WIDTH: 100% !important
-				}
-				.center_content {
-					TEXT-ALIGN: center !important
-				}
-				.center_image {
-					MARGIN: 0px auto
-				}
-				.center_button {
-					MAX-WIDTH: 250px !important; WIDTH: 50% !important; MARGIN-LEFT: 25% !important
-				}
-				.centerize {
-					MARGIN: 0px auto
-				}
-				.shrink_font {
-					FONT-SIZE: 48px
-				}
-				.safe_color {
-					COLOR: #6a1b9a !important
-				}
-				BODY {
-					WIDTH: 100% !important; MIN-WIDTH: 100% !important
-				}
-				TABLE[class='flexibleContainer'] {
-					WIDTH: 100% !important
-				}
-				IMG[class='flexibleImage'] {
-					HEIGHT: auto !important; WIDTH: 100% !important
-				}
-				#foxeslab-email .table1 {
-					WIDTH: 98% !important
-				}
-				#foxeslab-email .no_float {
-					WIDTH: 100% !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .wise_float {
-					WIDTH: auto !important; FLOAT: none !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .mobile_hide {
-					DISPLAY: none !important
-				}
-				.auto_height {
-					HEIGHT: auto !important
-				}
-			}
-&lt;/STYLE&gt;
-
-&lt;/HEAD&gt;
-&lt;BODY id=foxeslab-email style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;
+    <value>&lt;BODY id=foxeslab-email style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;
 	&lt;TABLE class="table_full editable-bg-color bg_color_ffffff editable-bg-image" style="BACKGROUND-IMAGE: url(#); BORDER-COLLAPSE: collapse; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left center; background-size: 100% 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt" cellSpacing=0 cellPadding=0 width="100%" align=center bgColor=#ffffff background=# border=0 mc:variant="Header" mc:repeatable="castellab"&gt;&lt;!-- padding-top --&gt;
 	&lt;TBODY&gt;
 		&lt;TR&gt;
@@ -597,7 +239,7 @@
 									&lt;TR&gt;
 										&lt;TD class=text_color_c6c6c6 style="FONT-SIZE: 14px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=center mc:edit="text102"&gt;
 											&lt;DIV class=editable-text&gt;
-												&lt;SPAN class=text_container&gt;Byl jsi vyzván na zápas od &lt;STRONG&gt;{0}&lt;/STRONG&gt;, výzvu můžeš přijmout kliknutím na tento odkaz.&lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;PŘIJÍMÁM&lt;/a&gt;&lt;/STRONG&gt; nebo odmítnout. &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;ODMÍTÁM&lt;/a&gt;&lt;/STRONG&gt;&lt;BR&gt;
+												&lt;SPAN class=text_container&gt;Byl jsi vyzván na zápas od &lt;STRONG&gt;{0}&lt;/STRONG&gt;, výzvu můžeš přijmout kliknutím na tento odkaz.&lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/Home/AcceptChallange?matchId={5}"&gt;PŘIJÍMÁM&lt;/a&gt;&lt;/STRONG&gt; nebo odmítnout. &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/Home/RefuseChallenge?matchId={5}"&gt;ODMÍTÁM&lt;/a&gt;&lt;/STRONG&gt;&lt;BR&gt;
 												V každém případě prosím odpovězte co nejdříve, buď prostřednictvím tohoto mailu nebo na webu &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;
 											&lt;/DIV&gt;
 										&lt;/TD&gt;
@@ -661,189 +303,10 @@
 						&lt;/TD&gt;
 					&lt;/TR&gt;&lt;!-- END body --&gt;&lt;!-- padding-bottom --&gt;
 &lt;TR&gt;
-&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;</value>
+&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;</value>
   </data>
   <data name="ChallangeRefusedEmail" xml:space="preserve">
-    <value>&lt;HTML xmlns="http://www.w3.org/1999/xhtml"&gt;
-	&lt;HEAD&gt;
-		&lt;TITLE&gt;LTC Svoboda - Žebříček&lt;/TITLE&gt;
-		&lt;META content="text/html; charset=UTF-8" http-equiv=Content-Type&gt;&lt;META name=viewport content=width=device-width&gt;
-			&lt;STYLE type=text/css&gt;BODY {
-				HEIGHT: 100% !important; WIDTH: 100% !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				TABLE {
-					BORDER-COLLAPSE: separate
-				}
-				IMG {
-					BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-TOP-WIDTH: 0px
-				}
-				A IMG {
-					BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-TOP-WIDTH: 0px
-				}
-				H1 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H2 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H3 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H4 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H5 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H6 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				P {
-					MARGIN: 1em 0px
-				}
-				.ReadMsgBody {
-					WIDTH: 100%
-				}
-				.ExternalClass {
-					WIDTH: 100%
-				}
-				.ExternalClass {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass P {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass SPAN {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass FONT {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass TD {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass DIV {
-					LINE-HEIGHT: 100%
-				}
-				TABLE {
-					mso-table-lspace: 0pt; mso-table-rspace: 0pt
-				}
-				TD {
-					mso-table-lspace: 0pt; mso-table-rspace: 0pt
-				}
-				#outlook A {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px
-				}
-				IMG {
-					-MS-INTERPOLATION-MODE: bicubic
-				}
-				BODY {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				TABLE {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				TD {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				P {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				A {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				LI {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				BLOCKQUOTE {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				IMG {
-					MAX-WIDTH: 100%; HEIGHT: auto
-				}
-
-				@media Unknown    
-				{
-				.shrink_font {
-					FONT-SIZE: 62px
-				}
-				#foxeslab-email .table1 {
-					WIDTH: 90% !important
-				}
-				#foxeslab-email .table1-2 {
-					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
-				}
-				#foxeslab-email .table1-3 {
-					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
-				}
-				#foxeslab-email .table1-4 {
-					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
-				}
-				#foxeslab-email .table1-5 {
-					WIDTH: 90% !important; MARGIN-LEFT: 5%; MARGIN-RIGHT: 5%
-				}
-				#foxeslab-email .tablet_no_float {
-					WIDTH: 100% !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .tablet_wise_float {
-					WIDTH: auto !important; FLOAT: none !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .tablet_hide {
-					DISPLAY: none !important
-				}
-				#foxeslab-email .image1 {
-					WIDTH: 98% !important
-				}
-				#foxeslab-email .image1-290 {
-					MAX-WIDTH: 290px !important; WIDTH: 100% !important
-				}
-				.center_content {
-					TEXT-ALIGN: center !important
-				}
-				.center_image {
-					MARGIN: 0px auto
-				}
-				.center_button {
-					MAX-WIDTH: 250px !important; WIDTH: 50% !important; MARGIN-LEFT: 25% !important
-				}
-				.centerize {
-					MARGIN: 0px auto
-				}
-				.shrink_font {
-					FONT-SIZE: 48px
-				}
-				.safe_color {
-					COLOR: #6a1b9a !important
-				}
-				BODY {
-					WIDTH: 100% !important; MIN-WIDTH: 100% !important
-				}
-				TABLE[class='flexibleContainer'] {
-					WIDTH: 100% !important
-				}
-				IMG[class='flexibleImage'] {
-					HEIGHT: auto !important; WIDTH: 100% !important
-				}
-				#foxeslab-email .table1 {
-					WIDTH: 98% !important
-				}
-				#foxeslab-email .no_float {
-					WIDTH: 100% !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .wise_float {
-					WIDTH: auto !important; FLOAT: none !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .mobile_hide {
-					DISPLAY: none !important
-				}
-				.auto_height {
-					HEIGHT: auto !important
-				}
-			}
-&lt;/STYLE&gt;
-
-&lt;/HEAD&gt;
-&lt;BODY id=foxeslab-email style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;
+    <value>&lt;BODY id=foxeslab-email style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;
 	&lt;TABLE class="table_full editable-bg-color bg_color_ffffff editable-bg-image" style="BACKGROUND-IMAGE: url(#); BORDER-COLLAPSE: collapse; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left center; background-size: 100% 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt" cellSpacing=0 cellPadding=0 width="100%" align=center bgColor=#ffffff background=# border=0 mc:variant="Header" mc:repeatable="castellab"&gt;&lt;!-- padding-top --&gt;
 	&lt;TBODY&gt;
 		&lt;TR&gt;
@@ -869,7 +332,7 @@
 									&lt;TR&gt;
 										&lt;TD class=text_color_c6c6c6 style="FONT-SIZE: 14px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=center mc:edit="text102"&gt;
 											&lt;DIV class=editable-text&gt;
-												&lt;SPAN class=text_container&gt;Tvoje výzva &lt;STRONG&gt;{0}&lt;/STRONG&gt; byla odmítnutá. Můžete to zkusit znovu &lt;strong&gt;&lt;a href="https://tenis-svoboda.azurewebsites.net/Home/Challenge?deffenderId={1}"&gt;Zopakovat výzvu&lt;/a&gt;&lt;/strong&gt; nebo výzvu smazat a zkusit vyzvat někoho jiného. &lt;strong&gt;&lt;a href="https://tenis-svoboda.azurewebsites.net/Home/DeleteMatch?match={2}"&gt;Smazat výzvu&lt;/a&gt;&lt;/strong&gt;  
+												&lt;SPAN class=text_container&gt;Tvoje výzva &lt;STRONG&gt;{0}&lt;/STRONG&gt; byla odmítnutá. Můžete to zkusit znovu &lt;strong&gt;&lt;a href="https://tenis-svoboda.azurewebsites.net/Home/ReChallenge?matchId={1}"&gt;Zopakovat výzvu&lt;/a&gt;&lt;/strong&gt; nebo výzvu smazat a zkusit vyzvat někoho jiného. &lt;strong&gt;&lt;a href="https://tenis-svoboda.azurewebsites.net/Home/DeleteMatch?matchId={1}"&gt;Smazat výzvu&lt;/a&gt;&lt;/strong&gt;  
 												&lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;
 											&lt;/DIV&gt;
 										&lt;/TD&gt;
@@ -903,7 +366,7 @@
 						&lt;/TD&gt;
 					&lt;/TR&gt;&lt;!-- END body --&gt;&lt;!-- padding-bottom --&gt;
 &lt;TR&gt;
-&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;</value>
+&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;</value>
   </data>
   <data name="ChallengeRefused" xml:space="preserve">
     <value>Výzva odmítnuta</value>
@@ -912,186 +375,7 @@
     <value>Výzva odeslána</value>
   </data>
   <data name="ConfirmResultEmail" xml:space="preserve">
-    <value>&lt;HTML xmlns="http://www.w3.org/1999/xhtml"&gt;
-	&lt;HEAD&gt;
-		&lt;TITLE&gt;LTC Svoboda - Žebříček&lt;/TITLE&gt;
-		&lt;META content="text/html; charset=UTF-8" http-equiv=Content-Type&gt;&lt;META name=viewport content=width=device-width&gt;
-			&lt;STYLE type=text/css&gt;BODY {
-				HEIGHT: 100% !important; WIDTH: 100% !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				TABLE {
-					BORDER-COLLAPSE: separate
-				}
-				IMG {
-					BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-TOP-WIDTH: 0px
-				}
-				A IMG {
-					BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-TOP-WIDTH: 0px
-				}
-				H1 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H2 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H3 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H4 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H5 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				H6 {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
-				}
-				P {
-					MARGIN: 1em 0px
-				}
-				.ReadMsgBody {
-					WIDTH: 100%
-				}
-				.ExternalClass {
-					WIDTH: 100%
-				}
-				.ExternalClass {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass P {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass SPAN {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass FONT {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass TD {
-					LINE-HEIGHT: 100%
-				}
-				.ExternalClass DIV {
-					LINE-HEIGHT: 100%
-				}
-				TABLE {
-					mso-table-lspace: 0pt; mso-table-rspace: 0pt
-				}
-				TD {
-					mso-table-lspace: 0pt; mso-table-rspace: 0pt
-				}
-				#outlook A {
-					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px
-				}
-				IMG {
-					-MS-INTERPOLATION-MODE: bicubic
-				}
-				BODY {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				TABLE {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				TD {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				P {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				A {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				LI {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				BLOCKQUOTE {
-					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
-				}
-				IMG {
-					MAX-WIDTH: 100%; HEIGHT: auto
-				}
-
-				@media Unknown    
-				{
-				.shrink_font {
-					FONT-SIZE: 62px
-				}
-				#foxeslab-email .table1 {
-					WIDTH: 90% !important
-				}
-				#foxeslab-email .table1-2 {
-					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
-				}
-				#foxeslab-email .table1-3 {
-					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
-				}
-				#foxeslab-email .table1-4 {
-					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
-				}
-				#foxeslab-email .table1-5 {
-					WIDTH: 90% !important; MARGIN-LEFT: 5%; MARGIN-RIGHT: 5%
-				}
-				#foxeslab-email .tablet_no_float {
-					WIDTH: 100% !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .tablet_wise_float {
-					WIDTH: auto !important; FLOAT: none !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .tablet_hide {
-					DISPLAY: none !important
-				}
-				#foxeslab-email .image1 {
-					WIDTH: 98% !important
-				}
-				#foxeslab-email .image1-290 {
-					MAX-WIDTH: 290px !important; WIDTH: 100% !important
-				}
-				.center_content {
-					TEXT-ALIGN: center !important
-				}
-				.center_image {
-					MARGIN: 0px auto
-				}
-				.center_button {
-					MAX-WIDTH: 250px !important; WIDTH: 50% !important; MARGIN-LEFT: 25% !important
-				}
-				.centerize {
-					MARGIN: 0px auto
-				}
-				.shrink_font {
-					FONT-SIZE: 48px
-				}
-				.safe_color {
-					COLOR: #6a1b9a !important
-				}
-				BODY {
-					WIDTH: 100% !important; MIN-WIDTH: 100% !important
-				}
-				TABLE[class='flexibleContainer'] {
-					WIDTH: 100% !important
-				}
-				IMG[class='flexibleImage'] {
-					HEIGHT: auto !important; WIDTH: 100% !important
-				}
-				#foxeslab-email .table1 {
-					WIDTH: 98% !important
-				}
-				#foxeslab-email .no_float {
-					WIDTH: 100% !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .wise_float {
-					WIDTH: auto !important; FLOAT: none !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
-				}
-				#foxeslab-email .mobile_hide {
-					DISPLAY: none !important
-				}
-				.auto_height {
-					HEIGHT: auto !important
-				}
-			}
-&lt;/STYLE&gt;
-
-&lt;/HEAD&gt;
-&lt;BODY id=foxeslab-email style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;
+    <value>&lt;BODY id=foxeslab-email style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;
 	&lt;TABLE class="table_full editable-bg-color bg_color_ffffff editable-bg-image" style="BACKGROUND-IMAGE: url(#); BORDER-COLLAPSE: collapse; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left center; background-size: 100% 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt" cellSpacing=0 cellPadding=0 width="100%" align=center bgColor=#ffffff background=# border=0 mc:variant="Header" mc:repeatable="castellab"&gt;&lt;!-- padding-top --&gt;
 	&lt;TBODY&gt;
 		&lt;TR&gt;
@@ -1174,10 +458,234 @@
 						&lt;/TD&gt;
 					&lt;/TR&gt;&lt;!-- END body --&gt;&lt;!-- padding-bottom --&gt;
 &lt;TR&gt;
-&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;</value>
+&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;</value>
+  </data>
+  <data name="EmailFormat" xml:space="preserve">
+    <value>&lt;HTML xmlns="http://www.w3.org/1999/xhtml"&gt;
+	&lt;HEAD&gt;
+		&lt;TITLE&gt;LTC Svoboda - Žebříček&lt;/TITLE&gt;
+		&lt;META content="text/html; charset=UTF-8" http-equiv=Content-Type&gt;&lt;META name=viewport content=width=device-width&gt;
+			&lt;STYLE type=text/css&gt;BODY {{
+				HEIGHT: 100% !important; WIDTH: 100% !important; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+				}}
+				TABLE {{
+					BORDER-COLLAPSE: separate
+				}}
+				IMG {{
+					BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-TOP-WIDTH: 0px
+				}}
+				A IMG {{
+					BORDER-LEFT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; OUTLINE-STYLE: none; BORDER-TOP-WIDTH: 0px
+				}}
+				H1 {{
+					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+				}}
+				H2 {{
+					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+				}}
+				H3 {{
+					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+				}}
+				H4 {{
+					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+				}}
+				H5 {{
+					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+				}}
+				H6 {{
+					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+				}}
+				P {{
+					MARGIN: 1em 0px
+				}}
+				.ReadMsgBody {{
+					WIDTH: 100%
+				}}
+				.ExternalClass {{
+					WIDTH: 100%
+				}}
+				.ExternalClass {{
+					LINE-HEIGHT: 100%
+				}}
+				.ExternalClass P {{
+					LINE-HEIGHT: 100%
+				}}
+				.ExternalClass SPAN {{
+					LINE-HEIGHT: 100%
+				}}
+				.ExternalClass FONT {{
+					LINE-HEIGHT: 100%
+				}}
+				.ExternalClass TD {{
+					LINE-HEIGHT: 100%
+				}}
+				.ExternalClass DIV {{
+					LINE-HEIGHT: 100%
+				}}
+				TABLE {{
+					mso-table-lspace: 0pt; mso-table-rspace: 0pt
+				}}
+				TD {{
+					mso-table-lspace: 0pt; mso-table-rspace: 0pt
+				}}
+				#outlook A {{
+					PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px
+				}}
+				IMG {{
+					-MS-INTERPOLATION-MODE: bicubic
+				}}
+				BODY {{
+					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
+				}}
+				TABLE {{
+					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
+				}}
+				TD {{
+					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
+				}}
+				P {{
+					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
+				}}
+				A {{
+					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
+				}}
+				LI {{
+					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
+				}}
+				BLOCKQUOTE {{
+					-MS-TEXT-SIZE-ADJUST: 100%; -webkit-text-size-adjust: 100%
+				}}
+				IMG {{
+					MAX-WIDTH: 100%; HEIGHT: auto
+				}}
+
+				@media Unknown    
+				{{
+				.shrink_font {{
+					FONT-SIZE: 62px
+				}}
+				#foxeslab-email .table1 {{
+					WIDTH: 90% !important
+				}}
+				#foxeslab-email .table1-2 {{
+					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
+				}}
+				#foxeslab-email .table1-3 {{
+					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
+				}}
+				#foxeslab-email .table1-4 {{
+					WIDTH: 98% !important; MARGIN-LEFT: 1%; MARGIN-RIGHT: 1%
+				}}
+				#foxeslab-email .table1-5 {{
+					WIDTH: 90% !important; MARGIN-LEFT: 5%; MARGIN-RIGHT: 5%
+				}}
+				#foxeslab-email .tablet_no_float {{
+					WIDTH: 100% !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
+				}}
+				#foxeslab-email .tablet_wise_float {{
+					WIDTH: auto !important; FLOAT: none !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
+				}}
+				#foxeslab-email .tablet_hide {{
+					DISPLAY: none !important
+				}}
+				#foxeslab-email .image1 {{
+					WIDTH: 98% !important
+				}}
+				#foxeslab-email .image1-290 {{
+					MAX-WIDTH: 290px !important; WIDTH: 100% !important
+				}}
+				.center_content {{
+					TEXT-ALIGN: center !important
+				}}
+				.center_image {{
+					MARGIN: 0px auto
+				}}
+				.center_button {{
+					MAX-WIDTH: 250px !important; WIDTH: 50% !important; MARGIN-LEFT: 25% !important
+				}}
+				.centerize {{
+					MARGIN: 0px auto
+				}}
+				.shrink_font {{
+					FONT-SIZE: 48px
+				}}
+				.safe_color {{
+					COLOR: #6a1b9a !important
+				}}
+				BODY {{
+					WIDTH: 100% !important; MIN-WIDTH: 100% !important
+				}}
+				TABLE[class='flexibleContainer'] {{
+					WIDTH: 100% !important
+				}}
+				IMG[class='flexibleImage'] {{
+					HEIGHT: auto !important; WIDTH: 100% !important
+				}}
+				#foxeslab-email .table1 {{
+					WIDTH: 98% !important
+				}}
+				#foxeslab-email .no_float {{
+					WIDTH: 100% !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
+				}}
+				#foxeslab-email .wise_float {{
+					WIDTH: auto !important; FLOAT: none !important; TEXT-ALIGN: center !important; CLEAR: both; MARGIN: 0px auto
+				}}
+				#foxeslab-email .mobile_hide {{
+					DISPLAY: none !important
+				}}
+				.auto_height {{
+					HEIGHT: auto !important
+				}}
+			}}
+&lt;/STYLE&gt;
+
+&lt;/HEAD&gt;
+{0}
+&lt;/HTML&gt;</value>
   </data>
   <data name="MatchRemoved" xml:space="preserve">
     <value>Zápas smazán</value>
+  </data>
+  <data name="RegistrationEmail" xml:space="preserve">
+    <value>&lt;BODY id=foxeslab-email style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;
+	&lt;TABLE class="table_full editable-bg-color bg_color_ffffff editable-bg-image" style="BACKGROUND-IMAGE: url(#); BORDER-COLLAPSE: collapse; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left center; background-size: 100% 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt" cellSpacing=0 cellPadding=0 width="100%" align=center bgColor=#ffffff background=# border=0 mc:variant="Header" mc:repeatable="castellab"&gt;&lt;!-- padding-top --&gt;
+	&lt;TBODY&gt;
+		&lt;TR&gt;
+			&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;!-- body --&gt;
+		&lt;TR&gt;
+		&lt;TD&gt;
+			&lt;TABLE class=table1 cellSpacing=0 cellPadding=0 width=600 align=center border=0&gt;
+				&lt;TBODY&gt;
+					&lt;TR&gt;
+						&lt;TD style="BORDER-TOP: #f2f2f2 1px solid; BORDER-RIGHT: #f2f2f2 1px solid; BORDER-BOTTOM: #f2f2f2 1px solid; PADDING-BOTTOM: 40px; PADDING-TOP: 40px; PADDING-LEFT: 0px; BORDER-LEFT: #f2f2f2 1px solid; PADDING-RIGHT: 0px; border-radius: 5px" bgColor=#fcfcfc&gt;&lt;!-- body-container --&gt;
+							&lt;TABLE class=table1 cellSpacing=0 cellPadding=0 width=480 align=center border=0&gt;&lt;!-- email heading --&gt;
+								&lt;TBODY&gt;
+									&lt;TR&gt;
+										&lt;TD class=text_color_282828 style="FONT-SIZE: 18px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 600; COLOR: #8a8a8a; LINE-HEIGHT: 1; mso-line-height-rule: exactly" align=center mc:edit="text101"&gt;
+											&lt;DIV class=editable-text&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;
+												&lt;SPAN class=text_container&gt;Potvrď email!&lt;/SPAN&gt;
+											&lt;/DIV&gt;
+										&lt;/TD&gt;
+									&lt;/TR&gt;
+									&lt;TR&gt;
+										&lt;TD height=20&gt;&lt;/TD&gt;
+									&lt;/TR&gt;&lt;!-- email details --&gt;
+									&lt;TR&gt;
+										&lt;TD class=text_color_c6c6c6 style="FONT-SIZE: 14px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=center mc:edit="text102"&gt;
+											&lt;DIV class=editable-text&gt;
+												&lt;SPAN class=text_container&gt;Prosím potvrďt svůj email. &lt;a href="{0}"&gt;Klikni zde.&lt;/a&gt;. &lt;br&gt; &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;
+											&lt;/DIV&gt;
+										&lt;/TD&gt;
+									&lt;/TR&gt;&lt;!-- END email details --&gt;&lt;!-- horizontal gap --&gt;
+									&lt;TR&gt;
+										&lt;TD height=20&gt;&lt;/TD&gt;
+									&lt;/TR&gt;
+								&lt;/TBODY&gt;
+							&lt;/TABLE&gt;
+						&lt;/TD&gt;
+					&lt;/TR&gt;&lt;!-- END body --&gt;&lt;!-- padding-bottom --&gt;
+&lt;TR&gt;
+&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;</value>
   </data>
   <data name="ResultAdded" xml:space="preserve">
     <value>Výsledek přidán</value>
