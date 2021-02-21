@@ -76,7 +76,11 @@ namespace TenisRanking.Email
             return this.SendEmail(receiver.UserName, receiver.PlayerName, email, "Svoboda tenis žebříček - Výsledek čeká na potvrzení");
         }
 
-        private int GetDaysLimit(DateTime lastGamePlayed) => this.matchDaysLimitOptions.Value.Days - (DateTime.Now.Date - lastGamePlayed).Days;
+        private int GetDaysLimit(DateTime lastGamePlayed)
+        {
+            var value = this.matchDaysLimitOptions.Value.Days - (DateTime.Now.Date - lastGamePlayed).Days;
+            return value < 0 ? 0 : value;
+        }
 
         private async Task<bool> SendEmail(string mailTo, string name, string body, string subject)
         {

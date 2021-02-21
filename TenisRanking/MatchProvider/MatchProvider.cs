@@ -59,6 +59,7 @@ namespace TenisRanking.MatchProvider
                     var playersToMove = this.context.GetPlayersInRanks(player.Rank, player.Rank + level +1, true);
                     player.Rank += level +1;
                     playersToMove.ForEach(p => p.Rank--);
+                    player.LastPlayedMatch = DateTime.Now;
 
                     this.context.UpdatePlayer(player);
                     playersToMove.ForEach(p => this.context.UpdatePlayer(p));

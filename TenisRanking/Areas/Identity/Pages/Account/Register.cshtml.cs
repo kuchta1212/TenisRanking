@@ -79,7 +79,7 @@ namespace TenisRanking.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var rank = this.context.GetLowestRank();
-                var user = new Player() {UserName = Input.Email, Email = Input.Email, Rank = rank +1, LastPlayedMatch = new DateTime(1900, 1, 1), PlayerName = Input.Name};
+                var user = new Player() {UserName = Input.Email, Email = Input.Email, Rank = rank +1, LastPlayedMatch = DateTime.Now, PlayerName = Input.Name};
                 
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
