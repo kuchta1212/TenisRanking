@@ -23,6 +23,8 @@ namespace TenisRanking.Models
 
         public List<Match> AllMatches { get; set; }
 
+        public List<Match> AllChellanges { get; set; }
+
         public ViewMessage ViewMessage { get; set; }
     }
 }

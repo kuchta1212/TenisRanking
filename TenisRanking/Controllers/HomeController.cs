@@ -65,6 +65,9 @@ namespace TenisRanking.Controllers
                     ? this.context.GetAllRefusedMatches(userId)
                     : new List<Match>(),
                 AllMatches = this.context.GetAllMatches(),
+                AllChellanges = this.User.Identity.IsAuthenticated
+                    ? this.context.GetAllChallenges()
+                    : new List<Match>(),
                 ViewMessage = this.viewMessageFactory.Create(status, message)
             };
 

@@ -135,6 +135,11 @@ namespace TenisRanking.Data
         {
             return this.dbContext.Matches.Where(m => m.Status == MatchStatus.WaitingForConfirmation).ToList();
         }
+
+        public List<Match> GetAllChallenges()
+        {
+            return this.dbContext.Matches.Where(m => m.Status != MatchStatus.Played).ToList();
+        }
     }
 }
 

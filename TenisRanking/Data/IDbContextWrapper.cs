@@ -41,5 +41,7 @@ namespace TenisRanking.Data
         void ConfirmResult(string matchId);
 
         List<Match> GetMatchesWithUnConfirmedResults();
+
+        List<Match> GetAllChallenges();
     }
 }
