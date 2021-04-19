@@ -643,8 +643,106 @@
 {0}
 &lt;/HTML&gt;</value>
   </data>
+  <data name="ForgotPasswordEmail" xml:space="preserve">
+    <value>&lt;BODY id=foxeslab-email style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;
+	&lt;TABLE class="table_full editable-bg-color bg_color_ffffff editable-bg-image" style="BACKGROUND-IMAGE: url(#); BORDER-COLLAPSE: collapse; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left center; background-size: 100% 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt" cellSpacing=0 cellPadding=0 width="100%" align=center bgColor=#ffffff background=# border=0 mc:variant="Header" mc:repeatable="castellab"&gt;&lt;!-- padding-top --&gt;
+	&lt;TBODY&gt;
+		&lt;TR&gt;
+			&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;!-- body --&gt;
+		&lt;TR&gt;
+		&lt;TD&gt;
+			&lt;TABLE class=table1 cellSpacing=0 cellPadding=0 width=600 align=center border=0&gt;
+				&lt;TBODY&gt;
+					&lt;TR&gt;
+						&lt;TD style="BORDER-TOP: #f2f2f2 1px solid; BORDER-RIGHT: #f2f2f2 1px solid; BORDER-BOTTOM: #f2f2f2 1px solid; PADDING-BOTTOM: 40px; PADDING-TOP: 40px; PADDING-LEFT: 0px; BORDER-LEFT: #f2f2f2 1px solid; PADDING-RIGHT: 0px; border-radius: 5px" bgColor=#fcfcfc&gt;&lt;!-- body-container --&gt;
+							&lt;TABLE class=table1 cellSpacing=0 cellPadding=0 width=480 align=center border=0&gt;&lt;!-- email heading --&gt;
+								&lt;TBODY&gt;
+									&lt;TR&gt;
+										&lt;TD class=text_color_282828 style="FONT-SIZE: 18px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 600; COLOR: #8a8a8a; LINE-HEIGHT: 1; mso-line-height-rule: exactly" align=center mc:edit="text101"&gt;
+											&lt;DIV class=editable-text&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;
+												&lt;SPAN class=text_container&gt;Reset hesla!&lt;/SPAN&gt;
+											&lt;/DIV&gt;
+										&lt;/TD&gt;
+									&lt;/TR&gt;
+									&lt;TR&gt;
+										&lt;TD height=20&gt;&lt;/TD&gt;
+									&lt;/TR&gt;&lt;!-- email details --&gt;
+									&lt;TR&gt;
+										&lt;TD class=text_color_c6c6c6 style="FONT-SIZE: 14px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=center mc:edit="text102"&gt;
+											&lt;DIV class=editable-text&gt;
+												&lt;SPAN class=text_container&gt;Resetujte si své heslo kliknutím na tento &lt;a href="{0}"&gt;ODKAZ&lt;/a&gt;&lt;BR&gt;
+												Odesláno z webu &lt;br&gt;&lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;
+											&lt;/DIV&gt;
+										&lt;/TD&gt;
+									&lt;/tr&gt;
+									&lt;tr&gt;
+									&lt;TD class=text_color_c6c6c6 style="FONT-SIZE: 12px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=center mc:edit="text102"&gt;
+											&lt;DIV class=editable-text&gt;
+												&lt;SPAN class=text_container&gt;V případě, že ste si tento email nevyžádali ho prosím ignorujte&lt;/SPAN&gt;
+											&lt;/DIV&gt;
+										&lt;/TD&gt;
+									&lt;/TR&gt;&lt;!-- END email details --&gt;&lt;!-- horizontal gap --&gt;
+									&lt;TR&gt;
+										&lt;TD height=20&gt;&lt;/TD&gt;
+									&lt;/TR&gt;
+								&lt;/TBODY&gt;
+							&lt;/TABLE&gt;
+						&lt;/TD&gt;
+					&lt;/TR&gt;&lt;!-- END body --&gt;&lt;!-- padding-bottom --&gt;
+&lt;TR&gt;
+&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;</value>
+  </data>
   <data name="MatchRemoved" xml:space="preserve">
     <value>Zápas smazán</value>
+  </data>
+  <data name="RegisterEmail" xml:space="preserve">
+    <value>&lt;BODY id=foxeslab-email style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;
+	&lt;TABLE class="table_full editable-bg-color bg_color_ffffff editable-bg-image" style="BACKGROUND-IMAGE: url(#); BORDER-COLLAPSE: collapse; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left center; background-size: 100% 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt" cellSpacing=0 cellPadding=0 width="100%" align=center bgColor=#ffffff background=# border=0 mc:variant="Header" mc:repeatable="castellab"&gt;&lt;!-- padding-top --&gt;
+	&lt;TBODY&gt;
+		&lt;TR&gt;
+			&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;!-- body --&gt;
+		&lt;TR&gt;
+		&lt;TD&gt;
+			&lt;TABLE class=table1 cellSpacing=0 cellPadding=0 width=600 align=center border=0&gt;
+				&lt;TBODY&gt;
+					&lt;TR&gt;
+						&lt;TD style="BORDER-TOP: #f2f2f2 1px solid; BORDER-RIGHT: #f2f2f2 1px solid; BORDER-BOTTOM: #f2f2f2 1px solid; PADDING-BOTTOM: 40px; PADDING-TOP: 40px; PADDING-LEFT: 0px; BORDER-LEFT: #f2f2f2 1px solid; PADDING-RIGHT: 0px; border-radius: 5px" bgColor=#fcfcfc&gt;&lt;!-- body-container --&gt;
+							&lt;TABLE class=table1 cellSpacing=0 cellPadding=0 width=480 align=center border=0&gt;&lt;!-- email heading --&gt;
+								&lt;TBODY&gt;
+									&lt;TR&gt;
+										&lt;TD class=text_color_282828 style="FONT-SIZE: 18px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 600; COLOR: #8a8a8a; LINE-HEIGHT: 1; mso-line-height-rule: exactly" align=center mc:edit="text101"&gt;
+											&lt;DIV class=editable-text&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;
+												&lt;SPAN class=text_container&gt;Potvrzení emailu!&lt;/SPAN&gt;
+											&lt;/DIV&gt;
+										&lt;/TD&gt;
+									&lt;/TR&gt;
+									&lt;TR&gt;
+										&lt;TD height=20&gt;&lt;/TD&gt;
+									&lt;/TR&gt;&lt;!-- email details --&gt;
+									&lt;TR&gt;
+										&lt;TD class=text_color_c6c6c6 style="FONT-SIZE: 14px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=center mc:edit="text102"&gt;
+											&lt;DIV class=editable-text&gt;
+												&lt;SPAN class=text_container&gt;Potvrďte prosím svůj email kliknutím na tento odkaz &lt;a href="{0}"&gt;ODKAZ&lt;/a&gt;&lt;BR&gt;
+												Odesláno z webu &lt;br&gt;&lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;
+											&lt;/DIV&gt;
+										&lt;/TD&gt;
+									&lt;/tr&gt;
+									&lt;tr&gt;
+									&lt;TD class=text_color_c6c6c6 style="FONT-SIZE: 12px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=center mc:edit="text102"&gt;
+											&lt;DIV class=editable-text&gt;
+												&lt;SPAN class=text_container&gt;V případě, že ste si tento email nevyžádali ho prosím ignorujte&lt;/SPAN&gt;
+											&lt;/DIV&gt;
+										&lt;/TD&gt;
+									&lt;/TR&gt;&lt;!-- END email details --&gt;&lt;!-- horizontal gap --&gt;
+									&lt;TR&gt;
+										&lt;TD height=20&gt;&lt;/TD&gt;
+									&lt;/TR&gt;
+								&lt;/TBODY&gt;
+							&lt;/TABLE&gt;
+						&lt;/TD&gt;
+					&lt;/TR&gt;&lt;!-- END body --&gt;&lt;!-- padding-bottom --&gt;
+&lt;TR&gt;
+&lt;TD height=100&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;</value>
   </data>
   <data name="RegistrationEmail" xml:space="preserve">
     <value>&lt;BODY id=foxeslab-email style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px"&gt;
@@ -689,5 +787,8 @@
   </data>
   <data name="ResultAdded" xml:space="preserve">
     <value>Výsledek přidán</value>
+  </data>
+  <data name="ResultConfirmed" xml:space="preserve">
+    <value>Výsledek byl potvrzen</value>
   </data>
 </root>

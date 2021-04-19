@@ -93,8 +93,7 @@ namespace TenisRanking.Areas.Identity.Pages.Account
                         values: new { userId = user.Id, code = code },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendRegisterConfirmationEmail(Input.Email, Input.Name, "Confirm your email",
-                        $"Prosím potvrďt svůj email. <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Klikni zde.</a>.");
+                    await _emailSender.SendRegisterConfirmationEmail(Input.Email, Input.Name, HtmlEncoder.Default.Encode(callbackUrl));
 
                     return LocalRedirect(returnUrl);
                 }

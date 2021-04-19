@@ -50,11 +50,11 @@ namespace TenisRanking.Email
             return this.SendEmail(mailTo, name, email, "Svoboda tenis žebříček - Výzva odmítnuta");
         }
 
-        public Task<bool> SendRegisterConfirmationEmail(string to, string name, string subject, string link)
+        public Task<bool> SendRegisterConfirmationEmail(string to, string name, string link)
         {
             var emailFormat = this.localizer[Messages.RegisterEmail].Value;
             var email = string.Format(emailFormat, link);
-            return this.SendEmail(to, name, email, subject);
+            return this.SendEmail(to, name, email, "Svoboda tenis žebříček - Potvrďte email");
         }
 
         public Task<bool> SendConfirmResultEmail(Player receiver, Player opponent, Match match, bool isReceiverDeffender)
@@ -74,6 +74,13 @@ namespace TenisRanking.Email
                     : receiver.PlayerName,
                 match.Result);
             return this.SendEmail(receiver.UserName, receiver.PlayerName, email, "Svoboda tenis žebříček - Výsledek čeká na potvrzení");
+        }
+
+        public Task<bool> SendForgotPasswordEmail(string to, string link)
+        {
+            var emailFormat = this.localizer[Messages.ForgotPasswordEmail].Value;
+            var email = string.Format(emailFormat, link);
+            return this.SendEmail(to, to, email, "Svoboda tenis žebříček - Reset hesla");
         }
 
         private int GetDaysLimit(DateTime lastGamePlayed)
@@ -104,5 +111,7 @@ namespace TenisRanking.Email
 
             return true;
         }
+
+
     }
 }

@@ -31,5 +31,7 @@ namespace TenisRanking.Models
         public static string EmailFormat = nameof(EmailFormat);
 
         public static string RegisterEmail = nameof(RegisterEmail);
+
+        public static string ForgotPasswordEmail = nameof(ForgotPasswordEmail);
     }
 }
