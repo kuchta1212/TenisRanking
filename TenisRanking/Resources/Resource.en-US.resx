@@ -144,7 +144,7 @@
 									&lt;TR&gt;
 										&lt;TD class=text_color_c6c6c6 style="FONT-SIZE: 14px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=center mc:edit="text102"&gt;
 											&lt;DIV class=editable-text&gt;
-												&lt;SPAN class=text_container&gt;Tvoje výzva &lt;STRONG&gt;{0}&lt;/STRONG&gt; byla přijata. Nezapomeňte zadat výsledek na webu &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;
+												&lt;SPAN class=text_container&gt;Tvoje výzva &lt;STRONG&gt;{0}&lt;/STRONG&gt; byla přijata. &lt;br/&gt;  Nezapomeň zadat výsledek na webu &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;.
 											&lt;/DIV&gt;
 										&lt;/TD&gt;
 									&lt;/TR&gt;&lt;!-- END email details --&gt;&lt;!-- horizontal gap --&gt;
@@ -164,7 +164,7 @@
 													&lt;TR&gt;
 														&lt;TD class="text_color_c6c6c6 center_content" style="FONT-SIZE: 14px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=left mc:edit="text102"&gt;
 															&lt;DIV class=editable-text&gt;
-																&lt;SPAN class=text_container&gt;&lt;STRONG&gt;Zápasové info:&lt;/STRONG&gt;&lt;BR&gt;Tvoje pozice na žebříčku: {1}&lt;BR&gt;Soupeřova pozice na žebříčku: {2}&lt;BR&gt;Počet dní do kdy by si měl odehrát další zápas aby ses vyhnul penalizaci: {3}&lt;BR&gt;&lt;/SPAN&gt;
+																&lt;SPAN class=text_container&gt;&lt;STRONG&gt;Zápasové info:&lt;/STRONG&gt;&lt;BR&gt;Tvoje pozice na žebříčku: {1}&lt;BR&gt;Soupeřova pozice na žebříčku: {2}&lt;BR&gt;Počet dní, do kdy by jsi měl odehrát další zápas, aby jsi se vyhnul penalizaci: {3}&lt;BR&gt;&lt;/SPAN&gt;
 															&lt;/DIV&gt;
 														&lt;/TD&gt;
 													&lt;/TR&gt;&lt;!-- horizontal gap --&gt;
@@ -239,8 +239,8 @@
 									&lt;TR&gt;
 										&lt;TD class=text_color_c6c6c6 style="FONT-SIZE: 14px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=center mc:edit="text102"&gt;
 											&lt;DIV class=editable-text&gt;
-												&lt;SPAN class=text_container&gt;Byl jsi vyzván na zápas od &lt;STRONG&gt;{0}&lt;/STRONG&gt;, výzvu můžeš přijmout kliknutím na tento odkaz.&lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/Home/AcceptChallange?matchId={5}"&gt;PŘIJÍMÁM&lt;/a&gt;&lt;/STRONG&gt; nebo odmítnout. &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/Home/RefuseChallenge?matchId={5}"&gt;ODMÍTÁM&lt;/a&gt;&lt;/STRONG&gt;&lt;BR&gt;
-												V každém případě prosím odpovězte co nejdříve, buď prostřednictvím tohoto mailu nebo na webu &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;
+												&lt;SPAN class=text_container&gt;Byl jsi vyzván na zápas od &lt;STRONG&gt;{0}&lt;/STRONG&gt;.&lt;br/&gt; Výzvu můžeš přijmout kliknutím na tento odkaz &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/Home/AcceptChallange?matchId={5}"&gt;PŘIJÍMÁM&lt;/a&gt;&lt;/STRONG&gt; nebo odmítnout &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/Home/RefuseChallenge?matchId={5}"&gt;ODMÍTÁM&lt;/a&gt;&lt;/STRONG&gt;.&lt;BR&gt;
+												V každém případě, prosím, odpověz co nejdříve, buď prostřednictvím tohoto mailu nebo na webu &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;.
 											&lt;/DIV&gt;
 										&lt;/TD&gt;
 									&lt;/TR&gt;&lt;!-- END email details --&gt;&lt;!-- horizontal gap --&gt;
@@ -260,7 +260,7 @@
 													&lt;TR&gt;
 														&lt;TD class="text_color_c6c6c6 center_content" style="FONT-SIZE: 14px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=left mc:edit="text102"&gt;
 															&lt;DIV class=editable-text&gt;
-																&lt;SPAN class=text_container&gt;&lt;STRONG&gt;Zápasové info:&lt;/STRONG&gt;&lt;BR&gt;Tvoje pozice na žebříčku: {1}&lt;BR&gt;Soupeřova pozice na žebříčku: {2}&lt;BR&gt;Počet dní do kdy by si měl odehrát další zápas aby ses vyhnul penalizaci: {3}&lt;BR&gt;&lt;/SPAN&gt;
+																&lt;SPAN class=text_container&gt;&lt;STRONG&gt;Zápasové info:&lt;/STRONG&gt;&lt;BR&gt;Tvoje pozice na žebříčku: {1}&lt;BR&gt;Soupeřova pozice na žebříčku: {2}&lt;BR&gt;Počet dní do kdy by jsi měl odehrát další zápas aby jsi se vyhnul penalizaci: {3}.&lt;BR&gt;&lt;/SPAN&gt;
 															&lt;/DIV&gt;
 														&lt;/TD&gt;
 													&lt;/TR&gt;&lt;!-- horizontal gap --&gt;
@@ -401,8 +401,8 @@
 									&lt;TR&gt;
 										&lt;TD class=text_color_c6c6c6 style="FONT-SIZE: 14px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=center mc:edit="text102"&gt;
 											&lt;DIV class=editable-text&gt;
-												&lt;SPAN class=text_container&gt;Výsledek z posledního zápasu s &lt;strong&gt;{0}&lt;/strong&gt; byl zadán do systému a čeká na vaše potvrzení. Pokud ho nepotvrdíte do 48h, výsledek se považuje za správný a bude automaticky započítán. 
-												V případě, že je výsledek v pořádku ho můžete potvrdit zde.&lt;STRONG&gt;&lt;a href="https://tenis-svoboda.azurewebsites.net/Home/ConfirmResult?matchId={1}"&gt;Potvrdit výsledek&lt;/a&gt;&lt;/STRONG&gt;. V opačném případě, můžete výsledek změnit na webu &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;
+												&lt;SPAN class=text_container&gt;Výsledek z posledního zápasu s &lt;strong&gt;{0}&lt;/strong&gt; byl zadán do systému a čeká na tvoje potvrzení.&lt;br/&gt; Pokud ho nepotvrdíš do 48h, výsledek se považuje za správný a bude automaticky započítán. &lt;br/&gt;
+												V případě, že je výsledek v pořádku ho můžeš potvrdit zde &lt;STRONG&gt;&lt;a href="https://tenis-svoboda.azurewebsites.net/Home/ConfirmResult?matchId={1}"&gt;Potvrdit výsledek&lt;/a&gt;&lt;/STRONG&gt;. V opačném případě, můžeš výsledek změnit na webu &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;.
 											&lt;/DIV&gt;
 										&lt;/TD&gt;
 									&lt;/TR&gt;&lt;!-- END email details --&gt;&lt;!-- horizontal gap --&gt;
@@ -678,7 +678,7 @@
 									&lt;tr&gt;
 									&lt;TD class=text_color_c6c6c6 style="FONT-SIZE: 12px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=center mc:edit="text102"&gt;
 											&lt;DIV class=editable-text&gt;
-												&lt;SPAN class=text_container&gt;V případě, že ste si tento email nevyžádali ho prosím ignorujte&lt;/SPAN&gt;
+												&lt;SPAN class=text_container&gt;V případě, že jste si tento email nevyžádali ho prosím ignorujte&lt;/SPAN&gt;
 											&lt;/DIV&gt;
 										&lt;/TD&gt;
 									&lt;/TR&gt;&lt;!-- END email details --&gt;&lt;!-- horizontal gap --&gt;
@@ -771,7 +771,7 @@
 									&lt;TR&gt;
 										&lt;TD class=text_color_c6c6c6 style="FONT-SIZE: 14px; FONT-FAMILY: 'Open Sans', Helvetica, sans-serif; FONT-WEIGHT: 400; COLOR: #8a8a8a; LINE-HEIGHT: 1.8; mso-line-height-rule: exactly" align=center mc:edit="text102"&gt;
 											&lt;DIV class=editable-text&gt;
-												&lt;SPAN class=text_container&gt;Prosím potvrďt svůj email. &lt;a href="{0}"&gt;Klikni zde.&lt;/a&gt;. &lt;br&gt; &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;
+												&lt;SPAN class=text_container&gt;Prosím potvrď svůj email. &lt;a href="{0}"&gt;Klikni zde.&lt;/a&gt;. &lt;br&gt; &lt;STRONG&gt;&lt;A href="https://tenis-svoboda.azurewebsites.net/"&gt;LTC Svoboda Žebříček&lt;/a&gt;&lt;/STRONG&gt;&lt;/SPAN&gt;
 											&lt;/DIV&gt;
 										&lt;/TD&gt;
 									&lt;/TR&gt;&lt;!-- END email details --&gt;&lt;!-- horizontal gap --&gt;
